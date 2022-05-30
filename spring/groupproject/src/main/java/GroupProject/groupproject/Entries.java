@@ -1,13 +1,26 @@
 package GroupProject.groupproject;
 
+import java.time.LocalDateTime;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class Entries {
+	private int id;
 	private String title;
 	private String author;
-	private String date;
+	
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime date;
+	
 	private String content;
 	
 	//setters 
+	
+	public void setId(int id) {
+		this.id=id;
+	}
 	
 	public void setTitle(String title) {
 		this.title=title;
@@ -18,7 +31,16 @@ public class Entries {
 	}
 	
 	public void setDate(String date) {
-		this.date = date;
+		//year month day hour minute second
+		String[] dateFromFile = date.split(" ");
+		int[] dateInt = new int[6];
+		
+		for(int i=0;i<dateInt.length;i++) {
+			dateInt[i]=Integer.parseInt(dateFromFile[i]);
+		}
+		
+		this.date = LocalDateTime.of(dateInt[0], dateInt[1],dateInt[2],dateInt[3],dateInt[4], dateInt[5]);
+		
 	}
 	
 	public void setContent(String content) {
@@ -27,12 +49,20 @@ public class Entries {
 	
 	// getters
 	
+	public int getId() {
+		return this.id;
+	}
+	
 	public String getTitle() {
 		return this.title;
 	}
-	public String getDate() {
+	
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	@DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+	public LocalDateTime getDate() {
 		return this.date;
 	}
+	
 	public String getAuthor() {
 		return this.author;
 	}
