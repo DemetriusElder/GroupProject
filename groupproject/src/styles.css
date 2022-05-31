@@ -19,3 +19,8 @@ a {
   text-decoration: none;
   color: black;
 }
+
+main {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
