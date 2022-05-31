@@ -12,7 +12,6 @@ public class Entries {
 	private String title;
 	private String author;
 	
-	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime date;
 	
 	private String content;
@@ -65,8 +64,6 @@ public class Entries {
 		return this.title;
 	}
 	
-	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-	@DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
 	public LocalDateTime getDate() {
 		return this.date;
 	}
