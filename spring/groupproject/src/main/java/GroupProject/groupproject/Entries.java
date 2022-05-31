@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class Entries {
 	private int id;
+	private String imageUrl;
 	private String title;
 	private String author;
 	
@@ -20,6 +21,10 @@ public class Entries {
 	
 	public void setId(int id) {
 		this.id=id;
+	}
+	
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 	
 	public void setTitle(String title) {
@@ -53,6 +58,9 @@ public class Entries {
 		return this.id;
 	}
 	
+	public String getImageUrl() {
+		return imageUrl;
+	}
 	public String getTitle() {
 		return this.title;
 	}

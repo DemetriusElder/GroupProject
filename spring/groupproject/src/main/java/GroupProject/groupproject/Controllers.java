@@ -35,29 +35,28 @@ public class Controllers {
 	@GetMapping("/entries")
 	public static String getEntries() throws FileNotFoundException, IOException
 	{
-		Path filePath = Path.of("C:\\Users\\dewwy\\elipse2\\GroupProject-main\\spring\\groupproject\\target\\classes\\static\\postentries.txt");
+		// reading file and parsing each blog entry
+		Path filePath = Path.of("C:\\Users\\wishm\\GroupProject\\spring\\groupproject\\src\\main\\resources\\static\\postentries.txt");
 		String fileTest = Files.readString(filePath);
 		String[] splitStrings = fileTest.split("[$]#&");
-
-//		ObjectMapper mapTime = new ObjectMapper();
-//		mapTime.registerModule(new JavaTimeModule());
-//		mapTime.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 
 		Entries[] entries = new Entries[splitStrings.length];
 		ArrayList<String> arrList = new ArrayList<String>();
 		
+		// assigning data to blog entry variables
 		for(int i = 0; i<splitStrings.length;i++) {
 			
-			for (String parsedStr: splitStrings[i].split(",",5)) {
+			for (String parsedStr: splitStrings[i].split(",",6)) {
 				arrList.add(parsedStr);
 			}
 			Entries entry = new Entries();
 			
 			entry.setId(Integer.parseInt(arrList.get(0)));
-			entry.setTitle(arrList.get(1));
-			entry.setDate(arrList.get(2));
-			entry.setAuthor(arrList.get(3));
-			entry.setContent(arrList.get(4));
+			entry.setImageUrl(arrList.get(1));
+			entry.setTitle(arrList.get(2));
+			entry.setDate(arrList.get(3));
+			entry.setAuthor(arrList.get(4));
+			entry.setContent(arrList.get(5));
 			
 			entries[i]=entry;
 			
@@ -82,7 +81,7 @@ public class Controllers {
 	public static String postEntries(String title, String date, String author, String post) throws IOException
 	{
 	 // Creates a FileWriter
-      FileWriter file = new FileWriter("C:\\Users\\dewwy\\elipse2\\GroupProject-main\\spring\\groupproject\\src\\main\\resources\\static\\postentries.txt", true);
+      FileWriter file = new FileWriter("C:\\Users\\wishm\\GroupProject\\spring\\groupproject\\src\\main\\resources\\static\\postentries.txt", true);
       System.out.println("It works1");
       // Creates a BufferedWriter
       BufferedWriter output = new BufferedWriter(file);
