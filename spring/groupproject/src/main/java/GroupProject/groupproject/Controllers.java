@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Random;
 import java.time.LocalDateTime;
 
 import org.springframework.boot.configurationprocessor.json.JSONArray;
@@ -77,21 +78,21 @@ public class Controllers {
 		
 		
 	}
-	@PostMapping("/post")
-	public static String postEntries(String title, String date, String author, String post) throws IOException
+	@PostMapping("/entries")
+	public static String postEntries(String title, String author, String post, String imageUrl) throws IOException
 	{
+	 LocalDateTime date = LocalDateTime.now(); 
+	 Random idgenerator = new Random();
+	 int id = idgenerator.nextInt(1000);
 	 // Creates a FileWriter
-      FileWriter file = new FileWriter("C:\\Users\\wishm\\GroupProject\\spring\\groupproject\\src\\main\\resources\\static\\postentries.txt", true);
-      System.out.println("It works1");
+      FileWriter file = new FileWriter("C:\\Users\\dewwy\\elipse2\\GroupProject-main\\spring\\groupproject\\src\\main\\resources\\static\\postentries.txt", true);
       // Creates a BufferedWriter
       BufferedWriter output = new BufferedWriter(file);
-      System.out.println("It works2");
       // Writes the string to the file
-      output.write(title +"," + date + "," + author + "," + post + "$&#");
-      System.out.println("It works3");
+      output.write(id + "," + imageUrl +"," + title +"," + date + "," + author + "," + post + "$&#");
       // Closes the writer
       output.close();
-      System.out.println("It works4");
+      System.out.println("It works");
 	return null;
 	}
 }
