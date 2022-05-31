@@ -9,6 +9,7 @@ import { BlogListComponent } from './blog-list/blog-list.component';
 import { BlogPreviewComponent } from './blog-preview/blog-preview.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { PostFormComponent } from './post-form/post-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { PostFormComponent } from './post-form/post-form.component';
     ]),
     FontAwesomeModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
