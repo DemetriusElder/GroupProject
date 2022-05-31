@@ -36,7 +36,7 @@ public class Controllers {
 	public static String getEntries() throws FileNotFoundException, IOException
 	{
 		// reading file and parsing each blog entry
-		Path filePath = Path.of("src\\main\\resources\\static\\postentries.txt").toAbsolutePath();
+		Path filePath = Path.of("groupproject\\src\\main\\resources\\static\\postentries.txt").toAbsolutePath();
 		String fileTest = Files.readString(filePath);
 		String[] splitStrings = fileTest.split("[$]#&");
 
