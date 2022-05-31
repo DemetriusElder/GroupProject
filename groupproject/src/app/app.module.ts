@@ -7,6 +7,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { BlogPreviewComponent } from './blog-preview/blog-preview.component';
+import { BlogDetailComponent } from './blog-detail/blog-detail.component';
+import { PostFormComponent } from './post-form/post-form.component';
 
 @NgModule({
   declarations: [
@@ -14,10 +16,16 @@ import { BlogPreviewComponent } from './blog-preview/blog-preview.component';
     NavbarComponent,
     BlogListComponent,
     BlogPreviewComponent,
+    BlogDetailComponent,
+    PostFormComponent,
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([{ path: '', component: BlogListComponent }]),
+    RouterModule.forRoot([
+      { path: '', component: BlogListComponent },
+      { path: 'blogs/:id', component: BlogDetailComponent },
+      { path: 'post', component: PostFormComponent },
+    ]),
     FontAwesomeModule,
     HttpClientModule,
   ],
