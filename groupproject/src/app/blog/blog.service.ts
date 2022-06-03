@@ -7,7 +7,7 @@ import { Blog } from './blog';
   providedIn: 'root',
 })
 export class BlogService {
-  private blogsUrl = 'http://localhost:8080/entries';
+  private blogsUrl = 'http://localhost:3000/posts';
   constructor(private http: HttpClient) {}
 
   getBlogs(): Observable<Blog[]> {

@@ -1,0 +1,57 @@
+{
+  "posts": [
+    {
+      "id": 0,
+      "imageUrl": "https://as1.ftcdn.net/v2/jpg/02/75/12/88/1000_F_275128826_1GvoZ4QOtzDyKdIRgz0Y2FXGHG9ylsEc.jpg",
+      "title": "Post 1",
+      "date": "2022-05-30T12:48:32",
+      "author": "Tam",
+      "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+    },
+
+    {
+      "id": 1,
+      "imageUrl": "https://as1.ftcdn.net/v2/jpg/02/47/75/80/1000_F_247758043_w5LqQ0bjHaD9F1TfHfs08V2C1lrkNo3A.jpg",
+      "title": "Post 2",
+      "date": "2022-05-29T12:49:52",
+      "author": "Maria",
+      "content": "I REALLY LIKE FOOD! FOOD IS GOOD!!!!"
+    },
+
+    {
+      "id": 2,
+      "imageUrl": "https://as2.ftcdn.net/v2/jpg/03/40/95/25/1000_F_340952551_CMVeFu1CGdtPlmAiFMP3ZTAX9JlwZHGb.jpg",
+      "title": "Post 3",
+      "date": "2022-05-31T14:52:23",
+      "author": "Hoang",
+      "content": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old."
+    },
+
+    {
+      "id": 3,
+      "imageUrl": "https://as1.ftcdn.net/v2/jpg/03/29/38/22/1000_F_329382269_ZkNpagmB49GO0tznezTd2zTsJhcZOJ5n.jpg",
+      "title": "Post 4",
+      "date": "2022-06-02T10:26:34",
+      "author": "Demetrius",
+      "content": "Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source."
+    },
+
+    {
+      "id": 4,
+      "imageUrl": "https://as1.ftcdn.net/v2/jpg/03/34/03/70/1000_F_334037046_odx4HmpopvP7JxMCJ7w7gFSzkx1ZJbAx.jpg",
+      "title": "Post 5",
+      "date": "2022-06-02T17:38:42",
+      "author": "Simon",
+      "content": "Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32."
+    },
+
+    {
+      "id": 5,
+      "imageUrl": "https://as1.ftcdn.net/v2/jpg/03/06/73/82/1000_F_306738299_vJGD6d2nhaFZyvJ7PO7yLWum6GcR3Y1o.jpg",
+      "title": "Post 6",
+      "date": "2022-06-02T18:59:59",
+      "author": "Senhai",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    }
+  ]
+}
