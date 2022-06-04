@@ -6,6 +6,8 @@ import GroupProject.groupproject.dto.PostEntryDto;
 import GroupProject.groupproject.entity.Entry;
 import GroupProject.groupproject.service.EntryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController()
@@ -27,5 +29,11 @@ public class EntryController {
 	@PostMapping()
 	public void postEntry(@RequestBody PostEntryDto postEntryDto) {
 		entryService.addEntries(postEntryDto);
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Entry> getById(@PathVariable("id") Long id) throws UserNotFoundException{
+		Entry newEntry = entryService.getById(id);
+		return new ResponseEntity<>(newEntry, HttpStatus.OK);
 	}
 }
