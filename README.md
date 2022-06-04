@@ -1,6 +1,6 @@
 I recommend against git pull and instead delete the old folder on your local machine and git clone this repo
 
-since we're using file database it could cause conflict with git that cannot be resolved.
+since we're using file database it could cause conflict that cannot be resolved in git.
 
 ### Run Backend
 
