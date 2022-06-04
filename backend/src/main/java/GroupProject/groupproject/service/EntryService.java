@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EntryService {
@@ -31,5 +32,8 @@ public class EntryService {
         newEntry.setImageUrl(postEntryDto.getImageUrl());
         newEntry.setDate(LocalDateTime.now());
         entryRepository.save(newEntry);
+    }
+    public Entry getById(Long id) throws ResourceNotFoundException(){
+    	return entryRepository.getById(id);
     }
 }
