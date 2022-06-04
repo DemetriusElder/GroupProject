@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #f8f8f8;
+  font-family: "Merriweather", serif;
+}
+
+.container {
+  padding: 0 400px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+main {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
