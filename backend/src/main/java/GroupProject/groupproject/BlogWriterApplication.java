@@ -8,12 +8,11 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-@SpringBootApplication (exclude = {DataSourceAutoConfiguration.class })
+@SpringBootApplication
 @CrossOrigin(origins="*")
-public class GroupprojectApplication {
+public class BlogWriterApplication {
 
 	/*disabling CORS*/
-	
 	@Bean
 	public WebMvcConfigurer configure() {
 		return new WebMvcConfigurer() {
@@ -26,7 +25,7 @@ public class GroupprojectApplication {
 	}
 	
 	public static void main(String[] args) {
-		SpringApplication.run(GroupprojectApplication.class, args);
+		SpringApplication.run(BlogWriterApplication.class, args);
 	}
 
 }
