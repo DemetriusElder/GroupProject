@@ -53,7 +53,7 @@ export class PostFormComponent implements OnInit {
       content: this.f['content'].value,
     };
     console.log(blog);
-    this.blogService.postBlog(blog);
+    this.blogService.postBlog(blog).subscribe();
   }
   onReset(): void {
     this.submitted = false;

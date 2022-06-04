@@ -7,14 +7,19 @@ import { Blog } from './blog';
   providedIn: 'root',
 })
 export class BlogService {
-  private blogsUrl = 'http://localhost:3000/posts';
+  private blogsUrl = 'http://localhost:8080/entries';
+
   constructor(private http: HttpClient) {}
 
   getBlogs(): Observable<Blog[]> {
     return this.http.get<Blog[]>(this.blogsUrl);
   }
 
-  postBlog(blog: Blog): void {
-    this.http.post<Blog[]>(this.blogsUrl, blog);
+  postBlog(blog: Blog): Observable<void> {
+    return this.http.post<void>(this.blogsUrl, blog);
+  }
+
+  getBlogById(id: string): Observable<Blog> {
+    return this.http.get<Blog>(`${this.blogsUrl}/${id}`);
   }
 }
