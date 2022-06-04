@@ -2,13 +2,13 @@ package GroupProject.groupproject.service;
 
 import GroupProject.groupproject.dto.PostEntryDto;
 import GroupProject.groupproject.entity.Entry;
+import GroupProject.groupproject.exception.EntryNotFoundException;
 import GroupProject.groupproject.repository.EntryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class EntryService {
@@ -33,7 +33,11 @@ public class EntryService {
         newEntry.setDate(LocalDateTime.now());
         entryRepository.save(newEntry);
     }
-    public Entry getById(Long id) throws ResourceNotFoundException(){
-    	return entryRepository.getById(id);
+    public Entry getById(Long id) throws EntryNotFoundException {
+        System.out.println(id);
+        if (!entryRepository.existsById(id)) {
+            throw new EntryNotFoundException();
+        }
+        return entryRepository.getById(id);
     }
 }

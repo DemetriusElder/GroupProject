@@ -4,6 +4,7 @@ import java.util.List;
 
 import GroupProject.groupproject.dto.PostEntryDto;
 import GroupProject.groupproject.entity.Entry;
+import GroupProject.groupproject.exception.EntryNotFoundException;
 import GroupProject.groupproject.service.EntryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,7 +33,7 @@ public class EntryController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Entry> getById(@PathVariable("id") Long id) throws UserNotFoundException{
+	public ResponseEntity<Entry> getEntryById(@PathVariable("id") Long id) throws EntryNotFoundException {
 		Entry newEntry = entryService.getById(id);
 		return new ResponseEntity<>(newEntry, HttpStatus.OK);
 	}
