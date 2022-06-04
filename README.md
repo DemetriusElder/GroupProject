@@ -11,3 +11,11 @@ Username: sa
 Password:
 
 and click connect to view the database
+
+### Run Frontend
+
+Open frontend folder in Visual Studio Code
+
+Run "npm install" in the terminal
+
+Run "ng serve --open" start the front end application
