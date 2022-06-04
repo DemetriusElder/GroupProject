@@ -1,8 +1,12 @@
+I recommend against git pull and instead delete the old folder on your local machine and git clone this repo
+
+since we're using file database it could cause conflict with git that cannot be resolved.
+
 ### Run Backend
 
 Open backend folder and start the application
 
-Go to localhost:8080/h2-console 
+Go to localhost:8080/h2-console
 
 JDBC URL: jdbc:h2:file:./BlogDatabase
 

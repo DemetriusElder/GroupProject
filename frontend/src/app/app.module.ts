@@ -10,6 +10,7 @@ import { BlogPreviewComponent } from './blog-preview/blog-preview.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { PostFormComponent } from './post-form/post-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DateAgoPipe } from './pipes/date-ago.pipe';
 
 @NgModule({
   declarations: [
@@ -19,13 +20,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     BlogPreviewComponent,
     BlogDetailComponent,
     PostFormComponent,
+    DateAgoPipe,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot([
       { path: '', component: BlogListComponent },
-      { path: 'blogs/:id', component: BlogDetailComponent },
       { path: 'post', component: PostFormComponent },
+      { path: 'blogs/:id', component: BlogDetailComponent },
     ]),
     FontAwesomeModule,
     HttpClientModule,
