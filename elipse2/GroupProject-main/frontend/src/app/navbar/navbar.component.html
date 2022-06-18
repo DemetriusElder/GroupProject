@@ -1,6 +1,6 @@
 <nav class="container">
   <a
-    routerLink="/"
+    routerLink="/home"
     routerLinkActive="active-link"
     [routerLinkActiveOptions]="{ exact: true }"
   >
@@ -9,4 +9,9 @@
   <a routerLink="/post" routerLinkActive="active-link">
     <fa-icon [icon]="faPlus"></fa-icon>
   </a>
+  <div *ngIf="!this.authenticationService.isUserLoggedIn(); else elseBlock"><a routerLink="/login" routerLinkActive="active-link">
+    Login
+   </a></div>
+<ng-template #elseBlock><a href="/logout" (click)="handleLogout()" routerLinkActive="active-link"
+  >Logout</a></ng-template>
 </nav>

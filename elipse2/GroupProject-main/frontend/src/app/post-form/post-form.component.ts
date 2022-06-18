@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { BlogService } from '../blog/blog.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post-form',
@@ -25,7 +26,8 @@ export class PostFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private blogService: BlogService
+    private blogService: BlogService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -52,8 +54,8 @@ export class PostFormComponent implements OnInit {
       imageUrl: this.f['image'].value,
       content: this.f['content'].value,
     };
-    console.log(blog);
-    this.blogService.postBlog(blog);
+    this.router.navigate(['home']);
+    this.blogService.postBlog(blog).subscribe();
   }
   onReset(): void {
     this.submitted = false;

@@ -1,10 +1,14 @@
 package GroupProject.groupproject.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.*;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 public class Entry {
 
 	@Id
