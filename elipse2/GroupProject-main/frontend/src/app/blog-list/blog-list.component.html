@@ -1,5 +1,7 @@
 <main class="container blog-list">
-  <div class="preview" *ngFor="let blog of blogs">
+  <div class="preview" *ngFor="let blog of blogs | paginate: { itemsPerPage: 4, currentPage: p }">
     <app-blog-preview [blog]="blog"></app-blog-preview>
   </div>
+  <br>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </main>

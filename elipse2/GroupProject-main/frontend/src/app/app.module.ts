@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { BasicAuthInterceptorService } from './basic-auth-interceptor.service';
 import { LogoutComponent } from './logout/logout.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { LogoutComponent } from './logout/logout.component';
     ]),
     FontAwesomeModule,
     HttpClientModule,
+    NgxPaginationModule,
     ReactiveFormsModule,
     FormsModule,
   ],
