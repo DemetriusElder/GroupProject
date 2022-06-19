@@ -40,4 +40,8 @@ public class EntryService {
         }
         return entryRepository.getById(id);
     }
+    
+    public List<Entry> getFilteredEntries(String searchKey){
+    	return entryRepository.getFilteredEntries(searchKey);
+    }
 }

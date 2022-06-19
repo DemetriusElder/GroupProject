@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { AuthenticationService } from '../login/auth.service';
 
 @Component({
@@ -11,6 +11,8 @@ import { AuthenticationService } from '../login/auth.service';
 export class NavbarComponent implements OnInit {
   faPlus = faPlus;
   isLoggedIn = false;
+  faSearch = faSearch;
+  public userInput!: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,5 +27,11 @@ export class NavbarComponent implements OnInit {
 
   handleLogout() {
     this.authenticationService.logout();
+  }
+  onSearch() {
+    console.log(this.userInput);
+
+    this.router.navigate(['search/', this.userInput]);
+    this.userInput = '';
   }
 }

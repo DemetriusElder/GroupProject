@@ -37,4 +37,9 @@ public class EntryController {
 		Entry newEntry = entryService.getById(id);
 		return new ResponseEntity<>(newEntry, HttpStatus.OK);
 	}
+	
+	@GetMapping("/search/{searchKey}")
+	public List<Entry> getFiltered(@PathVariable("searchKey") String key){
+		return entryService.getFilteredEntries(key);
+	}
 }

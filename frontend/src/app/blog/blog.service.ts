@@ -22,4 +22,8 @@ export class BlogService {
   getBlogById(id: string): Observable<Blog> {
     return this.http.get<Blog>(`${this.blogsUrl}/${id}`);
   }
+
+  getFilteredBlogs(searchKey: String): Observable<Blog[]> {
+    return this.http.get<Blog[]>(`${this.blogsUrl}/search/${searchKey}`);
+  }
 }
