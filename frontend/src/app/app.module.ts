@@ -35,7 +35,7 @@ import { SearchListComponent } from './search-list/search-list.component';
     RouterModule.forRoot(
       [
         { path: 'login', component: LoginComponent },
-        { path: '', component: BlogListComponent },
+        { path: 'home', component: BlogListComponent },
         { path: 'post', component: PostFormComponent },
         { path: 'blogs/:id', component: BlogDetailComponent },
         {

@@ -10,3 +10,9 @@ nav {
 .active-link {
   color: #89cff0;
 }
+
+.showIfLoggedIn {
+  display: flex;
+  column-gap: 20px;
+  justify-content: space-between;
+}
