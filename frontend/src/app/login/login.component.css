@@ -1,0 +1,18 @@
+.alert-warning {
+  padding-bottom: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: red;
+}
+.text-center {
+  text-align: center;
+  padding: 20px;
+}
+
+.form-group {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.form-control {
+}
