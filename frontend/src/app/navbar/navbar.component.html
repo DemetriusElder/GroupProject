@@ -10,23 +10,28 @@
     class="showIfLoggedIn"
     *ngIf="this.authenticationService.isUserLoggedIn()"
   >
-    <a routerLink="/post" routerLinkActive="active-link">
-      <fa-icon [icon]="faPlus"></fa-icon>
-    </a>
-    <form>
-      <input
-        type="text"
-        placeholder="Search"
-        aria-label="Search"
-        name="searchinput"
-        [(ngModel)]="userInput"
-      />
-      <a routerLinkActive="active-link" (click)="onSearch()">
-        <button type="submit">
-          <fa-icon [icon]="faSearch" aria-hidden="true"></fa-icon>
-        </button>
+    <div>
+      <a routerLink="/post" routerLinkActive="active-link">
+        <fa-icon [icon]="faPlus"></fa-icon>
       </a>
-    </form>
+    </div>
+    <div>
+      <form>
+        <input
+          type="text"
+          placeholder="Search ..."
+          aria-label="Search"
+          name="searchinput"
+          class="searchInput"
+          [(ngModel)]="userInput"
+        />
+        <a routerLinkActive="active-link" (click)="onSearch()">
+          <button type="submit" class="searchButton">
+            <fa-icon [icon]="faSearch" aria-hidden="true"></fa-icon>
+          </button>
+        </a>
+      </form>
+    </div>
   </div>
   <div *ngIf="!this.authenticationService.isUserLoggedIn(); else elseBlock">
     <a routerLink="/login" routerLinkActive="active-link"> Login </a>

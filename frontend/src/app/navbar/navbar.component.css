@@ -13,6 +13,31 @@ nav {
 
 .showIfLoggedIn {
   display: flex;
-  column-gap: 20px;
+  column-gap: 150px;
   justify-content: space-between;
+}
+
+.searchInput {
+  border-bottom-color: black;
+  border-bottom-width: 2px;
+  border-left-style: none;
+  border-right-style: none;
+  border-top-style: none;
+  padding-left: 3px;
+  height: 30px;
+}
+
+.searchInput:focus {
+  outline: none;
+}
+
+.searchButton {
+  height: 30px;
+  padding: 5px;
+  border-left-style: none;
+  border-right-style: none;
+  border-top-style: none;
+  border-bottom-color: black;
+  border-bottom-width: 2px;
+  background-color: white;
 }
