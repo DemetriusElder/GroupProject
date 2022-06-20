@@ -51,6 +51,6 @@ export class SearchListComponent implements OnInit {
     console.log(this.searchKey);
     this.blogservice
       .getFilteredBlogs(searchKey)
-      .subscribe((blogs) => (this.blogs = blogs));
+      .subscribe((blogs) => (this.blogs = blogs.reverse()));
   }
 }

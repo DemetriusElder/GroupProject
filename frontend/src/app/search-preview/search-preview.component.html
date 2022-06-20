@@ -1,0 +1,13 @@
+<a routerLink="/blogs/{{ blog.id }}">
+  <div class="search-preview">
+    <div>
+      <img src="{{ blog.imageUrl }}" alt="image" class="preview-img" />
+    </div>
+    <div class="text-preview">
+      <p class="title preview-p">{{ blog.title }}</p>
+      <p class="author preview-p">{{ blog.author }}</p>
+      <p class="content preview-p">{{ blog.content | slice: 0:150 }} ...</p>
+      <p class="date preview-p">{{ blog.date | date: "short" }}</p>
+    </div>
+  </div>
+</a>

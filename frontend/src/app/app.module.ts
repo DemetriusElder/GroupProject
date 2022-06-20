@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { BasicAuthInterceptorService } from './basic-auth-interceptor.service';
 import { LogoutComponent } from './logout/logout.component';
 import { SearchListComponent } from './search-list/search-list.component';
+import { SearchPreviewComponent } from './search-preview/search-preview.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { SearchListComponent } from './search-list/search-list.component';
     LoginComponent,
     LogoutComponent,
     SearchListComponent,
+    SearchPreviewComponent,
   ],
   imports: [
     BrowserModule,

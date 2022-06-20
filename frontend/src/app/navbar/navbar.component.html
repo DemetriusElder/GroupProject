@@ -13,16 +13,20 @@
     <a routerLink="/post" routerLinkActive="active-link">
       <fa-icon [icon]="faPlus"></fa-icon>
     </a>
-    <input
-      type="text"
-      placeholder="Search"
-      aria-label="Search"
-      name="searchinput"
-      [(ngModel)]="userInput"
-    />
-    <a routerLinkActive="active-link" (click)="onSearch()">
-      <fa-icon [icon]="faSearch" aria-hidden="true"></fa-icon>
-    </a>
+    <form>
+      <input
+        type="text"
+        placeholder="Search"
+        aria-label="Search"
+        name="searchinput"
+        [(ngModel)]="userInput"
+      />
+      <a routerLinkActive="active-link" (click)="onSearch()">
+        <button type="submit">
+          <fa-icon [icon]="faSearch" aria-hidden="true"></fa-icon>
+        </button>
+      </a>
+    </form>
   </div>
   <div *ngIf="!this.authenticationService.isUserLoggedIn(); else elseBlock">
     <a routerLink="/login" routerLinkActive="active-link"> Login </a>

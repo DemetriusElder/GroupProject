@@ -1,0 +1,42 @@
+.search-preview {
+  display: flex;
+  column-gap: 10px;
+  margin: 10px;
+}
+.preview-img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 5px 5px 0 0;
+}
+
+.text-preview {
+  flex-grow: 1;
+  position: relative;
+}
+
+.title {
+  margin-top: 15px;
+  font-size: 27px;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+}
+
+.author {
+  font-size: 18px;
+}
+
+.content {
+  margin-top: 10px;
+  font-weight: 50%;
+  color: #6e6e6e;
+}
+
+.date {
+  font-size: 14px;
+  margin-top: 10px;
+  color: #6e6e6e;
+  position: absolute;
+  bottom: 25px;
+}
