@@ -30,9 +30,9 @@ export class NavbarComponent implements OnInit {
     this.isLoggedIn = this.authenticationService.isUserLoggedIn();
   }
   onSearch() {
-    console.log(this.userInput);
-
-    this.router.navigate(['search/', this.userInput]);
-    this.userInput = '';
+    if (this.userInput !== '' && this.userInput.charAt(0) !== ' ') {
+      this.router.navigate(['search/', this.userInput]);
+      this.userInput = '';
+    }
   }
 }
