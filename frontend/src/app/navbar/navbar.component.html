@@ -19,7 +19,9 @@
   <a routerLinkActive="active-link" (click)="onSearch()">
     <fa-icon [icon]="faSearch" aria-hidden="true"></fa-icon>
   </a>
-  <a *ngIf="isLoggedIn" class="nav-link" href="/logout" (click)="handleLogout()"
-    >Logout</a
-  >
+  <div *ngIf="!this.authenticationService.isUserLoggedIn(); else elseBlock"><a routerLink="/login" routerLinkActive="active-link">
+    Login
+   </a></div>
+   <ng-template #elseBlock><a href="/logout" (click)="handleLogout()" routerLinkActive="active-link"
+    >Logout</a></ng-template>
 </nav>

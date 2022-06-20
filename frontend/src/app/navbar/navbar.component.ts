@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService
+    public authenticationService: AuthenticationService
   ) {}
 
   ngOnInit() {
@@ -27,6 +27,7 @@ export class NavbarComponent implements OnInit {
 
   handleLogout() {
     this.authenticationService.logout();
+    this.isLoggedIn = this.authenticationService.isUserLoggedIn();
   }
   onSearch() {
     console.log(this.userInput);
