@@ -17,7 +17,7 @@ A blog application designed to allow users to browse, create and post, and searc
 - [ ] ✨ Make it pretty ✨
 
 ## Technologies and Languages
-<img src = "https://avatars.githubusercontent.com/u/139426?s=200&v=4" width="50px" /> <img src = "https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/spring-boot/spring-boot.png" width="50px" /> <img src = "https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/bootstrap/bootstrap.png" width="50px" /> <img src = "https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/typescript/typescript.png" width="50px" /> <img src = "https://raw.githubusercontent.com/github/explore/5b3600551e122a3277c2c5368af2ad5725ffa9a1/topics/java/java.png" width="50px" /> <img src = "https://user-images.githubusercontent.com/11943860/46922575-7017cf80-cfe1-11e8-845a-0cd198fb546c.png" width="50px" /> <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/2048px-Visual_Studio_Code_1.35_icon.svg.png" width="50px" />
+<a href="https://angular.io/"><img src = "https://avatars.githubusercontent.com/u/139426?s=200&v=4" width="50px" /></a> <a href="https://spring.io/"><img src = "https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/spring-boot/spring-boot.png" width="50px" /></a> <a href="https://getbootstrap.com/"><img src = "https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/bootstrap/bootstrap.png" width="50px" /></a> <a href="https://www.typescriptlang.org/"><img src = "https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/typescript/typescript.png" width="50px" /></a> <a href="https://www.java.com/en/"><img src = "https://raw.githubusercontent.com/github/explore/5b3600551e122a3277c2c5368af2ad5725ffa9a1/topics/java/java.png" width="50px" /></a> <a href="https://www.eclipse.org/ide/"><img src = "https://user-images.githubusercontent.com/11943860/46922575-7017cf80-cfe1-11e8-845a-0cd198fb546c.png" width="50px" /></a> <a href="https://code.visualstudio.com/"><img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/2048px-Visual_Studio_Code_1.35_icon.svg.png" width="50px" /></a>
 
 ## How To: Install and Run App
 
@@ -40,4 +40,4 @@ Open backend folder and start the application
 
 1. Open frontend folder in Visual Studio Code (or other alternative)
 2. Run "npm install" in the terminal
-3. Run "ng serve --open" start the front end application
+3. Run "ng serve --open" to start the front end application
