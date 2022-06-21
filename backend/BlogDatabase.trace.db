@@ -786,3 +786,6 @@ insert into user values('mdtam','testingpassword') [22018-200]
 2022-06-14 15:16:14 jdbc[13]: exception
 org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "mdtam"; SQL statement:
 insert into user values ('mdtam','tam1234') [22018-200]
+2022-06-20 18:49:08 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'javaguides' (AUTH_USERS: ""ID"" BIGINT DEFAULT NEXT VALUE FOR ""PUBLIC"".""SYSTEM_SEQUENCE_820447A1_52C6_4BA0_AB07_AA5DC8833758"" NOT NULL NULL_TO_DEFAULT SEQUENCE ""PUBLIC"".""SYSTEM_SEQUENCE_820447A1_52C6_4BA0_AB07_AA5DC8833758"")"; SQL statement:
+insert into AUTH_USERS values('javaguides','$2a$12$gYGOnrXDBjrylWNQ4rDgIepRJ4dMgSREBlFMT3Zbx4y1YgazZvnRG','admin','mdtam147') [22018-200]
