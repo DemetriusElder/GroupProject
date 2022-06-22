@@ -1,0 +1,34 @@
+<div class="container col-lg-6">
+    <h1 class="text-center">Login</h1>
+    <div class="card">
+      <div class="card-body">
+        <form class="form-group">
+          <div class="form-group">
+            <label for="email">User Name :</label>
+            <input
+              type="text"
+              class="form-control"
+              id="username"
+              [(ngModel)]="username"
+              placeholder="Enter User Name"
+              name="username"
+            />
+          </div>
+          <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input
+              type="password"
+              class="form-control"
+              [(ngModel)]="password"
+              id="password"
+              placeholder="Enter password"
+              name="password"
+            />
+          </div>
+          <input type="checkbox" id="role" (change)="onChange($event)" />
+         <label for="role">Are you an admin?</label><br>
+         <button (click)="handleRegister()" class="btn btn-success">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>
