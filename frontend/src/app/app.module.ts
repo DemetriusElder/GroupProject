@@ -16,7 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { BasicAuthInterceptorService } from './basic-auth-interceptor.service';
 import { LogoutComponent } from './logout/logout.component';
 import { SearchListComponent } from './search-list/search-list.component';
-import { SearchPreviewComponent } from './search-preview/search-preview.component';
+import { RegisterFormComponent } from './register/register-form.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,7 @@ import { SearchPreviewComponent } from './search-preview/search-preview.componen
     LoginComponent,
     LogoutComponent,
     SearchListComponent,
-    SearchPreviewComponent,
+    RegisterFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +40,7 @@ import { SearchPreviewComponent } from './search-preview/search-preview.componen
         { path: 'home', component: BlogListComponent },
         { path: 'post', component: PostFormComponent },
         { path: 'blogs/:id', component: BlogDetailComponent },
+        { path: 'register', component: RegisterFormComponent },
         {
           path: 'search/:searchKey',
           component: SearchListComponent,
