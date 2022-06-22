@@ -28,14 +28,17 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-    	 http.csrf().
-         disable()
-         .authorizeRequests()
-         .antMatchers(HttpMethod.OPTIONS, "/**")
-         .permitAll()
-         .anyRequest()
-         .authenticated()
-         .and()
-         .httpBasic();
+   	 http.csrf().
+     disable()
+     .authorizeRequests()
+     .antMatchers(HttpMethod.GET).permitAll()
+     .antMatchers(HttpMethod.POST, "/authusers").permitAll()
+     .antMatchers("http://localhost:8080/api/v1/basicauth").permitAll()
+     .antMatchers(HttpMethod.OPTIONS, "/**")
+     .permitAll()
+     .anyRequest()
+     .authenticated()
+     .and()
+     .httpBasic(); 
     }
 }
