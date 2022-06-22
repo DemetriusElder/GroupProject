@@ -1,44 +1,31 @@
 <nav class="container">
   <a
-    routerLink="/home"
+    routerLink="/"
     routerLinkActive="active-link"
     [routerLinkActiveOptions]="{ exact: true }"
   >
     BLOG
   </a>
-  <div
-    class="showIfLoggedIn"
-    *ngIf="this.authenticationService.isUserLoggedIn()"
-  >
-    <div>
-      <a routerLink="/post" routerLinkActive="active-link">
-        <fa-icon [icon]="faPlus"></fa-icon>
-      </a>
-    </div>
-    <div>
-      <form>
-        <input
-          type="text"
-          placeholder="Search ..."
-          aria-label="Search"
-          name="searchinput"
-          class="searchInput"
-          [(ngModel)]="userInput"
-        />
-        <a routerLinkActive="active-link" (click)="onSearch()">
-          <button type="submit" class="searchButton">
-            <fa-icon [icon]="faSearch" aria-hidden="true"></fa-icon>
-          </button>
-        </a>
-      </form>
-    </div>
-  </div>
-  <div *ngIf="!this.authenticationService.isUserLoggedIn(); else elseBlock">
-    <a routerLink="/login" routerLinkActive="active-link"> Login </a>
-  </div>
-  <ng-template #elseBlock
-    ><a href="/logout" (click)="handleLogout()" routerLinkActive="active-link"
-      >Logout</a
-    ></ng-template
-  >
+  
+ <div *ngIf="this.authenticationService.isUserLoggedIn();">
+  <a routerLink="/post" routerLinkActive="active-link">
+    <fa-icon [icon]="faPlus"></fa-icon>
+  </a>
+  
+</div>
+  <input
+    type="text"
+    placeholder="Search"
+    aria-label="Search"
+    name="searchinput"
+    [(ngModel)]="userInput"
+  />
+  <a routerLinkActive="active-link" (click)="onSearch()">
+    <fa-icon [icon]="faSearch" aria-hidden="true"></fa-icon>
+  </a>
+  <div *ngIf="!this.authenticationService.isUserLoggedIn(); else elseBlock"><a routerLink="/login" routerLinkActive="active-link">
+    Login
+   </a></div>
+   <ng-template #elseBlock><a href="/logout" (click)="handleLogout()" routerLinkActive="active-link"
+    >Logout</a></ng-template>
 </nav>
