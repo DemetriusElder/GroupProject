@@ -6,3 +6,9 @@ export interface Blog {
   date?: Date;
   content?: string;
 }
+export interface AuthUser{
+  id?: string;
+  username?: string;
+  password?: string;
+  role?: string;
+}
