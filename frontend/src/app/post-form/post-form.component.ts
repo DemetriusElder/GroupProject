@@ -51,7 +51,7 @@ export class PostFormComponent implements OnInit {
   onSubmit(): void {
     this.submitted = true;
     if (this.form.invalid) {
-      console.log('Failure');
+      alert('Please fill in required inputs.');
       return;
     }
     const blog = {
@@ -67,4 +67,6 @@ export class PostFormComponent implements OnInit {
     this.submitted = false;
     this.form.reset();
   }
+
+  ifInvalid() {}
 }
