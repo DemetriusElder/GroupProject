@@ -1,5 +1,6 @@
 package GroupProject.groupproject.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import GroupProject.groupproject.dto.PostEntryDto;
@@ -26,7 +27,25 @@ public class EntryController {
 	public List<Entry> getEntries() {
 		return entryService.getAll();
 	}
+	@GetMapping("/count")
+	public ResponseEntity<Long> getEntriesCount() {
+		return new ResponseEntity<Long>(entryService.getTableSize() , HttpStatus.OK); 
+	}
 
+	@GetMapping("/pagelist/{pagenumber}")
+	public List<Entry> getPaginatedList(@PathVariable("pagenumber")int pagenumber) {
+		int pagesize = 6;
+		int x = pagesize * (pagenumber -1);
+		List<Entry> tempList = entryService.getAll();
+		List<Entry> pageList = new ArrayList<Entry>(pagesize);
+		for(int i = 0; i < pagesize; i++) {
+			if(x < tempList.size()) {
+				pageList.add(tempList.get(x));
+				x++;
+			}
+		}
+		return pageList;
+	}
 	@PostMapping()
 	public void postEntry(@RequestBody PostEntryDto postEntryDto) {
 		entryService.addEntries(postEntryDto);
