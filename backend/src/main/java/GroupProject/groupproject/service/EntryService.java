@@ -23,6 +23,10 @@ public class EntryService {
     public List<Entry> getAll() {
         return entryRepository.findAll();
     }
+    
+    public long getTableSize() {
+    	return entryRepository.count();
+    }
 
     public void addEntries(PostEntryDto postEntryDto) {
         Entry newEntry = new Entry();
@@ -42,7 +46,6 @@ public class EntryService {
     }
     
     public List<Entry> getFilteredEntries(String searchKey){
-    	searchKey = searchKey.toLowerCase();
     	return entryRepository.getFilteredEntries(searchKey);
     }
 }
