@@ -8,6 +8,8 @@ import {
 } from '@angular/forms';
 import { BlogService } from '../blog/blog.service';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../authentication.service';
+import { StoreUser } from '../login/storeUser.service';
 
 @Component({
   selector: 'app-post-form',
@@ -21,22 +23,25 @@ export class PostFormComponent implements OnInit {
     image: new FormControl(''),
     content: new FormControl(''),
   });
-
   submitted = false;
+  profileJson?: string;
+  testUser: any;
 
   constructor(
     private formBuilder: FormBuilder,
     private blogService: BlogService,
-    private router: Router
+    private router: Router,
+    private authenticationService: AuthenticationService,
+    private storeuser: StoreUser
   ) {}
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       title: ['', Validators.required],
-      author: ['', Validators.required],
       image: ['', Validators.required],
       content: ['', Validators.required],
     });
+    this.testUser = this.storeuser.getUsername();
   }
 
   get f(): { [key: string]: AbstractControl } {
@@ -46,16 +51,18 @@ export class PostFormComponent implements OnInit {
   onSubmit(): void {
     this.submitted = true;
     if (this.form.invalid) {
+      console.log("Failure");
       return;
     }
     const blog = {
       title: this.f['title'].value,
-      author: this.f['author'].value,
+      author: this.testUser.getUsername,
       imageUrl: this.f['image'].value,
       content: this.f['content'].value,
     };
-    this.router.navigate(['']);
+    this.router.navigate(['home']);
     this.blogService.postBlog(blog).subscribe();
+
   }
   onReset(): void {
     this.submitted = false;
