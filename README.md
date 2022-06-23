@@ -8,15 +8,15 @@ A blog application designed to allow users to browse, create and post, and searc
 - [x] Create new posts
 - [x] Search through existing posts
 - [x] Login and logout
-- [ ] Register new users
+- [x] Register new users
 
 #### To Do:
 - [x] Bcrypt & User database 🔐 🕵️‍♂️
 - [ ] Cosmos DB
-- [ ] Pagination
+- [x] Pagination (Ugly but functional✨)
 - [ ] Edit && || delete function for certain users
 - [ ] Finish bootstrapping app 👢
-- [ ] Autofill author field when creating new post 🖊️
+- [x] Autofill author field when creating new post 🖊️
 - [ ] ✨ Make it pretty ✨
 
 ## Technologies and Languages
