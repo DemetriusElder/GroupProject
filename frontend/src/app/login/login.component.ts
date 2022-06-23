@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from './auth.service';
+import { StoreUser } from './storeUser.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private storeuser: StoreUser
   ) {}
 
   ngOnInit() {}
@@ -32,6 +34,7 @@ export class LoginComponent implements OnInit {
           console.log(this.password);
           this.invalidLogin = false;
           this.loginSuccess = true;
+          this.storeuser.setUsername(this.username);
           this.successMessage = 'Login Successful.';
           this.router.navigate(['home']);
         },
