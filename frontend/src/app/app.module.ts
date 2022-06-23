@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { BasicAuthInterceptorService } from './basic-auth-interceptor.service';
 import { LogoutComponent } from './logout/logout.component';
 import { SearchListComponent } from './search-list/search-list.component';
+import { SearchPreviewComponent } from './search-preview/search-preview.component';
 import { RegisterFormComponent } from './register/register-form.component';
 
 @NgModule({
@@ -30,6 +31,7 @@ import { RegisterFormComponent } from './register/register-form.component';
     LoginComponent,
     LogoutComponent,
     SearchListComponent,
+    SearchPreviewComponent,
     RegisterFormComponent,
   ],
   imports: [
@@ -41,6 +43,7 @@ import { RegisterFormComponent } from './register/register-form.component';
         { path: 'post', component: PostFormComponent },
         { path: 'blogs/:id', component: BlogDetailComponent },
         { path: 'register', component: RegisterFormComponent },
+        { path: '', redirectTo: '/home', pathMatch: 'full' },
         {
           path: 'search/:searchKey',
           component: SearchListComponent,

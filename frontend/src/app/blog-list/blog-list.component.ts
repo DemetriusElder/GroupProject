@@ -15,8 +15,7 @@ export class BlogListComponent implements OnInit {
   pagenumber: number = 1;
   private blogsUrl = 'http://localhost:8080/entries';
 
-  constructor(private blogService: BlogService,
-    private http: HttpClient) {}
+  constructor(private blogService: BlogService, private http: HttpClient) {}
 
   ngOnInit(): void {
     this.getBlogs();
@@ -25,18 +24,17 @@ export class BlogListComponent implements OnInit {
   getBlogs() {
     this.blogService
       .getPageBlogs(this.pagenumber)
-      .subscribe((blogs) => (this.blogs = blogs));
-      this.blogService.getCount().subscribe((y: number)=> 
-      {
-        this.count = y;
-        this.max = Math.ceil(this.count /6);
-      });
+      .subscribe((blogs) => (this.blogs = blogs.reverse()));
+    this.blogService.getCount().subscribe((y: number) => {
+      this.count = y;
+      this.max = Math.ceil(this.count / 6);
+    });
   }
-  changePage(x: number){
+  changePage(x: number) {
     this.pagenumber = x;
-    console.log("Max:" + this.max);
-    console.log("count:" + this.count);
-    console.log("pagenumber:" + this.pagenumber);
+    console.log('Max:' + this.max);
+    console.log('count:' + this.count);
+    console.log('pagenumber:' + this.pagenumber);
     this.getBlogs();
   }
 }
