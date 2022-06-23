@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { ComponentFactoryResolver, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Blog } from './blog';
 import { AuthUser } from './blog';
@@ -9,12 +9,21 @@ import { AuthUser } from './blog';
 })
 export class BlogService {
   private blogsUrl = 'http://localhost:8080/entries';
-  private authusersUrl = 'http://localhost:8080/authusers'
+  private authusersUrl = 'http://localhost:8080/authusers';
 
   constructor(private http: HttpClient) {}
 
   getBlogs(): Observable<Blog[]> {
     return this.http.get<Blog[]>(this.blogsUrl);
+  }
+
+  getCount():Observable<number>{
+    return this.http.get<number>(`${this.blogsUrl}/count`)
+  }
+
+  getPageBlogs(pagenumber: number): Observable<Blog[]> {
+    console.log(pagenumber);
+    return this.http.get<Blog[]>(`${this.blogsUrl}/pagelist/${pagenumber}`);
   }
 
   postBlog(blog: Blog): Observable<void> {
