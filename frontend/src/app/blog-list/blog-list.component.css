@@ -10,3 +10,21 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 5px;
 }
+button {
+  background: #ddd;
+  color: #2c303a;
+  height: 35px;
+  padding: 0 10px;
+  font-size: 15px;
+  text-transform: uppercase;
+  transition: background 0.3s ease;
+  margin: 0 2px;
+  width: auto;
+  border:none;
+}
+button:hover {
+  background-color:#000000;
+}
+.text-center {
+  text-align: center;
+}
