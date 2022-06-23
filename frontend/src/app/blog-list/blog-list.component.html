@@ -6,7 +6,7 @@
       <button  *ngIf="this.pagenumber - 2 > 0"  type='button'>Prev</button>
       <button *ngIf="this.pagenumber -1 > 0"  type='button' (click)="changePage(this.pagenumber -1)">{{this.pagenumber -1}}</button>
       <button *ngIf="this.pagenumber != this.max"  type='button' (click)="changePage(this.pagenumber)">{{this.pagenumber}}</button>
-      <button *ngIf="this.pagenumber < this.max"  type='button' (click)="changePage(this.pagenumber +1)">{{this.pagenumber +1}}</button>
+      <button *ngIf="this.pagenumber + 1 <= this.max"  type='button' (click)="changePage(this.pagenumber +1)">{{this.pagenumber +1}}</button>
       <button *ngIf="this.pagenumber + 1 < this.max"  type='button'>Next</button>
       </div>
 </main>

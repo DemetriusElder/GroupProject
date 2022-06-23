@@ -29,12 +29,14 @@ export class BlogListComponent implements OnInit {
       this.blogService.getCount().subscribe((y: number)=> 
       {
         this.count = y;
-        this.max = Math.ceil(this.count /2);
+        this.max = Math.ceil(this.count /6);
       });
   }
   changePage(x: number){
-    this.max = Math.ceil(this.count /2);
     this.pagenumber = x;
-    console.log(this.max);
+    console.log("Max:" + this.max);
+    console.log("count:" + this.count);
+    console.log("pagenumber:" + this.pagenumber);
+    this.getBlogs();
   }
 }
