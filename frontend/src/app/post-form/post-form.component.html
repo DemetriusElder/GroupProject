@@ -1,6 +1,6 @@
 <main class="container">
   <h1>Write A Post</h1>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="ng-invalid">
     <div class="two-columns">
       <div class="field">
         <label for="image">Image</label>
@@ -8,8 +8,23 @@
           type="text"
           formControlName="image"
           placeholder="Enter an Image URL"
-          class="text-input"
+          [ngClass]="
+            form.controls['image'].touched && form.controls['image'].value == ''
+              ? 'invalid'
+              : 'text-input'
+          "
         />
+      </div>
+    </div>
+    <div
+      *ngIf="
+        form.controls['image'].invalid &&
+        (form.controls['image'].dirty || form.controls['image'].touched)
+      "
+      class="alert alert-danger"
+    >
+      <div *ngIf="form.controls['image'].errors?.['required']">
+        Image is required.
       </div>
     </div>
     <div class="field">
@@ -18,8 +33,23 @@
         type="text"
         formControlName="title"
         placeholder="Enter a title"
-        class="text-input"
+        [ngClass]="
+          form.controls['title'].touched && form.controls['title'].value == ''
+            ? 'invalid'
+            : 'text-input'
+        "
       />
+    </div>
+    <div
+      *ngIf="
+        form.controls['title'].invalid &&
+        (form.controls['title'].dirty || form.controls['title'].touched)
+      "
+      class="alert alert-danger"
+    >
+      <div *ngIf="form.controls['title'].errors?.['required']">
+        Title is required.
+      </div>
     </div>
     <div class="field">
       <label for="content">Content</label>
@@ -27,8 +57,24 @@
         formControlName="content"
         cols="30"
         rows="30"
-        class="text-input"
+        [ngClass]="
+          form.controls['content'].touched &&
+          form.controls['content'].value == ''
+            ? 'invalid'
+            : 'text-input'
+        "
       ></textarea>
+    </div>
+    <div
+      *ngIf="
+        form.controls['content'].invalid &&
+        (form.controls['content'].dirty || form.controls['content'].touched)
+      "
+      class="alert alert-danger"
+    >
+      <div *ngIf="form.controls['content'].errors?.['required']">
+        Content is required.
+      </div>
     </div>
     <button type="submit">Publish</button>
   </form>

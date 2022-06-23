@@ -43,3 +43,16 @@ button {
   cursor: pointer;
   border-radius: 5px;
 }
+
+.invalid {
+  border: 2px solid red; /* red */
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 10px 5px;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+
+.alert {
+  font-weight: bold;
+  color: red;
+}

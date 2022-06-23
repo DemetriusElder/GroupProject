@@ -51,7 +51,7 @@ export class PostFormComponent implements OnInit {
   onSubmit(): void {
     this.submitted = true;
     if (this.form.invalid) {
-      console.log("Failure");
+      console.log('Failure');
       return;
     }
     const blog = {
@@ -62,7 +62,6 @@ export class PostFormComponent implements OnInit {
     };
     this.router.navigate(['home']);
     this.blogService.postBlog(blog).subscribe();
-
   }
   onReset(): void {
     this.submitted = false;
