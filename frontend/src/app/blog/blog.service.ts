@@ -43,6 +43,10 @@ export class BlogService {
     return this.http.get<Blog>(`${this.blogsUrl}/${id}`);
   }
 
+  getAuthUsersByUsername(username: String) : Observable<AuthUser>{
+    return this.http.get<AuthUser>(`${this.authusersUrl}/usernamesearch/${username}`);
+  }
+
   deleteBlogById(id: number): Observable<void>{
     return this.http.delete<void>(`${this.blogsUrl}/delete/${id}`);
   }
