@@ -13,8 +13,12 @@ public interface AuthUsersRepository extends JpaRepository<AuthUsers, Long>{
 	 	List<AuthUsers> findAll();
 
 	    AuthUsers getById(Long id);
+	    
+	    AuthUsers getByUsername(String username);
 
 	    boolean existsById(Long id);
+	    
+	    boolean existsByUsername(String username);
 	    
 	    @Query("SELECT e FROM AuthUsers e WHERE CONCAT(e.username, e.password, e.role) LIKE %?1%")
 	    List<AuthUsers> getFilteredAuthUsers(String searchKey);
