@@ -10,5 +10,7 @@
   </div>
   <br>
   <button (click)="deleteBlog(blog)" class="btn btn-success">Delete This Post</button>
+  <div *ngIf = "this.validateUser();">
   <button (click)="updateBlog(blog)" class="btn btn-success">Update This Post</button>
+  </div>
 </main>

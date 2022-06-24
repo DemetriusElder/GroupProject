@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Blog } from '../blog/blog';
+import { AuthUser, Blog } from '../blog/blog';
 import { BlogService } from '../blog/blog.service';
 import { StoreUser } from '../login/storeUser.service';
 
@@ -12,6 +12,7 @@ import { StoreUser } from '../login/storeUser.service';
 export class BlogDetailComponent implements OnInit {
   blog!: Blog;
   x: number = 0;
+  roleChecker?: AuthUser;
 
   
   constructor(
@@ -24,6 +25,7 @@ export class BlogDetailComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.params['id'];
     this.getBlogById(id);
+    this.blogService.getAuthUsersByUsername(this.storeuser.getUsername()).subscribe((authuser) => (this.roleChecker = authuser));
   
   }
 
@@ -42,5 +44,9 @@ export class BlogDetailComponent implements OnInit {
     this.router.navigate(['home']);
 
     });
+  }
+  validateUser(){
+    return this.storeuser.getUsername() == this.blog.author || 
+    this.roleChecker?.role == "Admin";
   }
 }
