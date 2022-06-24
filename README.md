@@ -14,7 +14,7 @@ A blog application designed to allow users to browse, create and post, and searc
 - [x] Bcrypt & User database 🔐 🕵️‍♂️
 - [ ] Cosmos DB
 - [x] Pagination (Ugly but functional✨)
-- [ ] Edit && || delete function for certain users
+- [x] Edit && || delete function for certain users
 - [ ] Finish bootstrapping app 👢
 - [x] Autofill author field when creating new post 🖊️
 - [ ] ✨ Make it pretty ✨
