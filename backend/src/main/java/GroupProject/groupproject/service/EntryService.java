@@ -46,6 +46,7 @@ public class EntryService {
     }
     
     public List<Entry> getFilteredEntries(String searchKey){
+    	searchKey = searchKey.toLowerCase();
     	return entryRepository.getFilteredEntries(searchKey);
     }
     public Entry updateEntry(Entry entry) {

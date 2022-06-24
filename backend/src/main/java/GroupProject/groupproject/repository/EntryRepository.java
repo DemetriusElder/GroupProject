@@ -18,6 +18,6 @@ public interface EntryRepository extends JpaRepository<Entry, Long> {
     
     void deleteEntryById(Long id);
     
-    @Query("SELECT e FROM Entry e WHERE CONCAT(e.title, e.author, e.content) LIKE %?1%")
+    @Query("SELECT e FROM Entry e WHERE LOWER(CONCAT(e.title, e.author, e.content)) LIKE %?1%")
     List<Entry> getFilteredEntries(String searchKey);
 }
