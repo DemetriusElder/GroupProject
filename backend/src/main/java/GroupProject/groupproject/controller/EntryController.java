@@ -2,6 +2,9 @@ package GroupProject.groupproject.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.*;
+
+import javax.transaction.Transactional;
 
 import GroupProject.groupproject.dto.PostEntryDto;
 import GroupProject.groupproject.entity.Entry;
@@ -11,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.yaml.snakeyaml.util.ArrayUtils;
 
 @RestController()
 @RequestMapping("entries")
@@ -37,6 +41,7 @@ public class EntryController {
 		int pagesize = 6;
 		int x = pagesize * (pagenumber -1);
 		List<Entry> tempList = entryService.getAll();
+		Collections.reverse(tempList);
 		List<Entry> pageList = new ArrayList<Entry>(pagesize);
 		for(int i = 0; i < pagesize; i++) {
 			if(x < tempList.size()) {
@@ -44,6 +49,7 @@ public class EntryController {
 				x++;
 			}
 		}
+		Collections.reverse(pageList);
 		return pageList;
 	}
 	@PostMapping()
@@ -61,11 +67,13 @@ public class EntryController {
 	public List<Entry> getFiltered(@PathVariable("searchKey") String key){
 		return entryService.getFilteredEntries(key);
 	}
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PutMapping
-	public ResponseEntity<Entry> updateEntry(@RequestBody Entry entry){
+	public ResponseEntity<Entry> updateEntry(@RequestBody Entry entry) throws EntryNotFoundException{
 		Entry updateEntry = entryService.updateEntry(entry);
 		return new ResponseEntity<>(updateEntry, HttpStatus.OK);
 	}
+	@CrossOrigin(origins = "http://localhost:4200")
 	@Transactional
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<?> deleteEntry(@PathVariable("id") Long id){
