@@ -48,4 +48,10 @@ public class EntryService {
     public List<Entry> getFilteredEntries(String searchKey){
     	return entryRepository.getFilteredEntries(searchKey);
     }
+    public Entry updateEntry(Entry entry) {
+    	return entryRepository.save(entry);
+    }
+    public void deleteEntry(Long id) {
+    	entryRepository.deleteEntryById(id);
+    }
 }
