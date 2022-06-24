@@ -9,5 +9,6 @@
     {{ blog?.content }}
   </div>
   <br>
-  <button (click)="deleteBlog(36)" class="btn btn-success">Login</button>
+  <button (click)="deleteBlog(blog)" class="btn btn-success">Delete This Post</button>
+  <button (click)="updateBlog(blog)" class="btn btn-success">Update This Post</button>
 </main>

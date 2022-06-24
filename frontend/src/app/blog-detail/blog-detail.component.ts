@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Blog } from '../blog/blog';
 import { BlogService } from '../blog/blog.service';
+import { StoreUser } from '../login/storeUser.service';
 
 @Component({
   selector: 'app-blog-detail',
@@ -10,18 +11,19 @@ import { BlogService } from '../blog/blog.service';
 })
 export class BlogDetailComponent implements OnInit {
   blog!: Blog;
-  tempblog: any;
+  x: number = 0;
 
   
   constructor(
     private blogService: BlogService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router,
+    private storeuser: StoreUser
   ) {}
 
   ngOnInit(): void {
     const id = this.route.snapshot.params['id'];
     this.getBlogById(id);
-    this.tempblog = this.getBlogById(35);
   
   }
 
@@ -30,11 +32,15 @@ export class BlogDetailComponent implements OnInit {
   }
   updateBlog(blog: Blog): void{
     this.blogService.updateEntries(blog);
+    this.storeuser.setBlog(this.blog);
+    this.router.navigate(['update']);
   }
-  deleteBlog(id: number): void{
-    this.blogService.deleteBlogById(id).subscribe(data => {
+  deleteBlog(blog: Blog): void{
+    this.x = blog.id as number;
+    this.blogService.deleteBlogById(this.x).subscribe(data => {
       console.log(data);
+    this.router.navigate(['home']);
+
     });
-    console.log("TEST");
   }
 }
