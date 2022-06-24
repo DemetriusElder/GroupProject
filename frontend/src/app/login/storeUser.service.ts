@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Blog } from '../blog/blog';
 
 @Injectable({
   // declares that this service should be created
@@ -7,8 +8,14 @@ import { Injectable } from '@angular/core';
 })
 export class StoreUser {
     username: any;
-setUsername(username: string) {      
+    blog?: Blog;
+  setUsername(username: string) {      
         this.username = username;  
       } 
   getUsername() { return this.username; }
+
+  setBlog(blog: Blog){
+    this.blog = blog;
+  }
+  getBlog() {return this.blog;}
 }
