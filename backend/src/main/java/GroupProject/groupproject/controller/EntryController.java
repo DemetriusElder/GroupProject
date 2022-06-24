@@ -61,4 +61,15 @@ public class EntryController {
 	public List<Entry> getFiltered(@PathVariable("searchKey") String key){
 		return entryService.getFilteredEntries(key);
 	}
+	@PutMapping
+	public ResponseEntity<Entry> updateEntry(@RequestBody Entry entry){
+		Entry updateEntry = entryService.updateEntry(entry);
+		return new ResponseEntity<>(updateEntry, HttpStatus.OK);
+	}
+	@Transactional
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<?> deleteEntry(@PathVariable("id") Long id){
+		entryService.deleteEntry(id);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
 }
