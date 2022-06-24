@@ -46,10 +46,13 @@ public class EntryService {
     }
     
     public List<Entry> getFilteredEntries(String searchKey){
-    	searchKey = searchKey.toLowerCase();
     	return entryRepository.getFilteredEntries(searchKey);
     }
-    public Entry updateEntry(Entry entry) {
+    public Entry updateEntry(Entry entry) throws EntryNotFoundException {
+    	if (entry.getDate() == null)
+    	{
+    		entry.setDate(getById(entry.getId()).getDate());
+    	}
     	return entryRepository.save(entry);
     }
     public void deleteEntry(Long id) {
