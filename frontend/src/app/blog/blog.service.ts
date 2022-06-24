@@ -44,12 +44,6 @@ export class BlogService {
   }
 
   deleteBlogById(id: number): Observable<void>{
-    const options = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-      }),
-      body: id,
-    };
     return this.http.delete<void>(`${this.blogsUrl}/delete/${id}`);
   }
 
