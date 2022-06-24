@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ComponentFactoryResolver, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Blog } from './blog';
@@ -34,8 +34,23 @@ export class BlogService {
     return this.http.post<void>(this.authusersUrl, authuser);
   }
 
-  getBlogById(id: string): Observable<Blog> {
+  updateEntries(blog : Blog): Observable<Blog>{
+    return this.http.put<Blog>(this.blogsUrl, blog);
+
+  }
+
+  getBlogById(id: number): Observable<Blog> {
     return this.http.get<Blog>(`${this.blogsUrl}/${id}`);
+  }
+
+  deleteBlogById(id: number): Observable<void>{
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body: id,
+    };
+    return this.http.delete<void>(`${this.blogsUrl}/delete/${id}`);
   }
 
   getFilteredBlogs(searchKey: String): Observable<Blog[]> {

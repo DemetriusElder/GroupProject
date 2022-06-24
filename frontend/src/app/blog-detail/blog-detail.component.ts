@@ -9,8 +9,10 @@ import { BlogService } from '../blog/blog.service';
   styleUrls: ['./blog-detail.component.css'],
 })
 export class BlogDetailComponent implements OnInit {
-  blog?: Blog;
+  blog!: Blog;
+  tempblog: any;
 
+  
   constructor(
     private blogService: BlogService,
     private route: ActivatedRoute
@@ -19,9 +21,20 @@ export class BlogDetailComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.params['id'];
     this.getBlogById(id);
+    this.tempblog = this.getBlogById(35);
+  
   }
 
-  getBlogById(id: string): void {
+  getBlogById(id: number): void {
     this.blogService.getBlogById(id).subscribe((blog) => (this.blog = blog));
+  }
+  updateBlog(blog: Blog): void{
+    this.blogService.updateEntries(blog);
+  }
+  deleteBlog(id: number): void{
+    this.blogService.deleteBlogById(id).subscribe(data => {
+      console.log(data);
+    });
+    console.log("TEST");
   }
 }
