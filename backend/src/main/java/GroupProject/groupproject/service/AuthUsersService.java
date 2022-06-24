@@ -32,11 +32,17 @@ public class AuthUsersService {
         authusersRepository.save(authusers);
     }
     public AuthUsers getById(Long id) throws EntryNotFoundException {
-        System.out.println(id);
         if (!authusersRepository.existsById(id)) {
             throw new EntryNotFoundException();
         }
         return authusersRepository.getById(id);
+    }
+    public AuthUsers getByUsername(String username) throws EntryNotFoundException {
+        System.out.println(username);
+        if (!authusersRepository.existsByUsername(username)) {
+            throw new EntryNotFoundException();
+        }
+        return authusersRepository.getByUsername(username);
     }
     
     public List<AuthUsers> getFilteredAuthUsers(String searchKey){
