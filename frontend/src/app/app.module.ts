@@ -11,13 +11,13 @@ import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { PostFormComponent } from './post-form/post-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DateAgoPipe } from './pipes/date-ago.pipe';
-import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { BasicAuthInterceptorService } from './basic-auth-interceptor.service';
 import { LogoutComponent } from './logout/logout.component';
 import { SearchListComponent } from './search-list/search-list.component';
 import { RegisterFormComponent } from './register/register-form.component';
 import { UpdateBlogComponent } from './update-blog/update-blog.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [

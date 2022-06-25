@@ -24,3 +24,117 @@ main {
   margin-top: 40px;
   margin-bottom: 40px;
 }
+
+.auth {
+  height: 100vh;
+  padding: 0 20px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.auth-left {
+  display: hidden;
+}
+
+.auth-right {
+  width: 100%;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.75rem;
+  width: 100%;
+  max-width: 416px;
+  margin: auto;
+}
+
+.auth-title {
+  margin-bottom: 26px;
+}
+
+.auth-field label {
+  font-weight: bold;
+  display: block;
+  margin: 14px 0 4px;
+  color: #0d0c22;
+}
+
+.auth-field input {
+  width: 100%;
+  border: 1px solid transparent;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+  height: 40px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  outline: none;
+  background-color: #f2f2f2;
+  color: #0d0c22;
+  appearance: none;
+}
+
+.auth-field input:hover {
+  border-color: rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
+}
+
+.auth-field input:focus {
+  border-color: rgba(234, 76, 137, 0.4);
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
+}
+
+.auth-field {
+  border: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-button {
+  height: 40px;
+  color: white;
+  background: #ea4c89;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  transition: color 200ms ease;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 10px 16px;
+  margin-top: 20px;
+}
+
+.auth-button:hover {
+  background: #f082ac;
+}
+
+.auth-small {
+  display: block;
+  text-align: center;
+}
+
+.auth-small a {
+  color: #1a73e8;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 992px) {
+  .auth {
+    display: grid;
+    padding: 0;
+    grid-template-columns: 1fr 3fr;
+    align-items: center;
+  }
+
+  .auth-left {
+    background-image: url("https://img.freepik.com/free-vector/colorful-memphis-style-poster-vector_53876-143598.jpg?t=st=1656121022~exp=1656121622~hmac=41bfcd74250efa04d63d172fb6bae1ee3c8424635d11bc2ec329d28f04131bb7&w=740");
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+  }
+}

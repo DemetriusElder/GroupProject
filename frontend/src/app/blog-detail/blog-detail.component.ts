@@ -11,7 +11,7 @@ import { StoreUser } from '../login/storeUser.service';
 })
 export class BlogDetailComponent implements OnInit {
   blog!: Blog;
-  x: number = 0;
+  x?: string;
   roleChecker?: AuthUser;
 
   
@@ -38,12 +38,12 @@ export class BlogDetailComponent implements OnInit {
     this.router.navigate(['update']);
   }
   deleteBlog(blog: Blog): void{
-    this.x = blog.id as number;
-    this.blogService.deleteBlogById(this.x).subscribe(data => {
-      console.log(data);
-    this.router.navigate(['home']);
+    // this.x = blog.id;
+    // this.blogService.deleteBlogById(this.x).subscribe(data => {
+    //   console.log(data);
+    // this.router.navigate(['home']);
 
-    });
+    // });
   }
   validateUser(){
     return this.storeuser.getUsername() == this.blog.author || 
