@@ -27,6 +27,7 @@ import { SearchPageComponent } from './components/search-page/search-page.compon
 import { ArticlePageComponent } from './components/article-page/article-page.component';
 import { MyPageComponent } from './components/my-page/my-page.component';
 import { AddPageComponent } from './components/add-page/add-page.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { AddPageComponent } from './components/add-page/add-page.component';
     ArticlePageComponent,
     MyPageComponent,
     AddPageComponent,
+    SearchBarComponent,
   ],
   imports: [
     BrowserModule,
