@@ -26,7 +26,7 @@ main {
 }
 
 .auth {
-  height: 100vh;
+  min-height: 100vh;
   padding: 0 20px;
   margin: 0 auto;
   display: flex;
@@ -34,11 +34,18 @@ main {
 }
 
 .auth-left {
-  display: hidden;
+  display: none;
 }
 
 .auth-right {
   width: 100%;
+}
+
+.auth-logo {
+  width: 100%;
+  max-width: 416px;
+  margin: auto;
+  margin-bottom: 1.5rem;
 }
 
 .auth-form {
@@ -51,7 +58,6 @@ main {
 }
 
 .auth-title {
-  margin-bottom: 26px;
 }
 
 .auth-field label {
@@ -102,12 +108,12 @@ main {
   border: none;
   border-radius: 8px;
   outline: none;
-  transition: color 200ms ease;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
   padding: 10px 16px;
   margin-top: 20px;
+  transition: background 200ms ease;
 }
 
 .auth-button:hover {
@@ -133,6 +139,8 @@ main {
   }
 
   .auth-left {
+    padding: 40px;
+    display: block;
     height: 100%;
     background-size: cover;
     background-position: center;

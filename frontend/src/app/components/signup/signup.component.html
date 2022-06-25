@@ -3,8 +3,11 @@
     logo -->
     <div class="auth-left"></div>
     <div class="auth-right">
+        <div class="auth-logo">
+            <app-logo></app-logo>
+        </div>
         <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="auth-form">
-            <h2 class="auth-title">Sign up to Rambl</h2>
+            <h2 class="auth-title">Sign up to Ramble</h2>
             <div class="divided-fields">
                 <fieldset class="auth-field">
                     <label for="firstName">First Name</label>
