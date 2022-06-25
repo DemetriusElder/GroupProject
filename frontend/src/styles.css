@@ -7,23 +7,14 @@
 
 body {
   min-height: 100vh;
-  background-color: #f2f2f2;
   font-family: "Nunito", sans-serif;
-}
-
-.container {
-  padding: 0 400px;
+  overflow-y: scroll;
 }
 
 a {
   text-decoration: none;
   color: black;
 }
-
-/* main {
-  margin-top: 40px;
-  margin-bottom: 40px;
-} */
 
 .primary-color {
   color: #ea4c89;

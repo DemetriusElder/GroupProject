@@ -2,4 +2,5 @@
   min-height: 100vh;
   display: grid;
   grid-template-rows: 80px 1fr 80px;
+  /* background-color: #f2f2f2; */
 }

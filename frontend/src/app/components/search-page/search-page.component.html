@@ -12,6 +12,7 @@
     </div>
 </section>
 <section class="blogs">
+    <div *ngIf="blogs.length===0 && key !== ''" class="search-message">No results for "<strong>{{key}}</strong>"</div>
     <app-blog-list [blogs]="blogs"></app-blog-list>
     <button class="btn" (click)="onFetchMore()" *ngIf="!last && blogs.length !== 0">See More</button>
 </section>

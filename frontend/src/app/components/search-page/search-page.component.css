@@ -71,3 +71,7 @@ input::-ms-input-placeholder {
   max-width: 1200px;
   margin: auto;
 }
+
+.search-message {
+  margin-top: 50px;
+}

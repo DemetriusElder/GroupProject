@@ -1,1 +1,12 @@
-<p>article-page works!</p>
+<main *ngIf="blog">
+    <div>
+        <span class="author">{{ blog.author }}</span> -
+        <span class="time" class="primary-color">{{ blog.date | dateAgo }}</span>
+    </div>
+    <h1>{{ blog.title }}</h1>
+    <img src="{{ blog.imageUrl }}" alt="image" />
+    <div>
+        {{ blog.content }}
+    </div>
+</main>
+<ng-template #elseBlock>This blog doesn't exist</ng-template>
