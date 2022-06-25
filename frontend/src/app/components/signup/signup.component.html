@@ -1,11 +1,13 @@
 <section class="auth">
     <!-- alert
     logo -->
-    <div class="auth-left"></div>
-    <div class="auth-right">
+    <div class="auth-left">
         <div class="auth-logo">
             <app-logo></app-logo>
         </div>
+    </div>
+    <div class="auth-right">
+
         <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="auth-form">
             <h2 class="auth-title">Sign up to Blog</h2>
             <div class="divided-fields">
@@ -37,7 +39,7 @@
                 <small *ngIf="password?.touched && password?.errors?.['minlength']">Password
                     must be at least 6 characters</small>
             </fieldset>
-            <button type="submit" class="auth-button">Sign Up</button>
+            <button type="submit" class="btn">Sign Up</button>
             <small class="auth-small">Already a member? <a [routerLink]="['/login']">Sign in now</a></small>
         </form>
     </div>

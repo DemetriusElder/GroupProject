@@ -23,21 +23,3 @@
 .banner-text p {
   margin-bottom: 2rem;
 }
-
-.banner-text a {
-  height: 40px;
-  color: white;
-  background: #ea4c89;
-  border: none;
-  border-radius: 8px;
-  outline: none;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  padding: 10px 16px;
-  transition: background 200ms ease;
-}
-
-.banner-text a:hover {
-  background: #f082ac;
-}

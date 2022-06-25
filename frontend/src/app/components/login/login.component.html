@@ -1,11 +1,12 @@
 <section class="auth">
     <!-- alert
     logo -->
-    <div class="auth-left bg"></div>
-    <div class="auth-right">
+    <div class="auth-left bg">
         <div class="auth-logo">
             <app-logo></app-logo>
         </div>
+    </div>
+    <div class="auth-right">
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="auth-form">
             <h2 class="auth-title">Sign in to Blog</h2>
             <fieldset class="auth-field">
@@ -17,7 +18,7 @@
                 <label for="password">Password</label>
                 <input type="password" id="password" formControlName="password" />
             </fieldset>
-            <button type="submit" class="auth-button" [disabled]="!loginForm.valid">Sign In</button>
+            <button type="submit" class="btn">Sign In</button>
             <small class="auth-small">Not a member? <a [routerLink]="['/signup']">Sign up now</a></small>
         </form>
     </div>
