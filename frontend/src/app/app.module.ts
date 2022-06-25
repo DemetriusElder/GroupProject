@@ -3,9 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes, ExtraOptions } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { BlogListComponent } from './blog-list/blog-list.component';
+import { BlogListComponent } from './components/blog-list/blog-list.component';
 import { BlogPreviewComponent } from './blog-preview/blog-preview.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { PostFormComponent } from './post-form/post-form.component';
@@ -20,6 +20,13 @@ import { UpdateBlogComponent } from './update-blog/update-blog.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LogoComponent } from './components/logo/logo.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { LayoutComponent } from './components/layout/layout.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
+import { SearchPageComponent } from './components/search-page/search-page.component';
+import { ArticlePageComponent } from './components/article-page/article-page.component';
+import { MyPageComponent } from './components/my-page/my-page.component';
+import { AddPageComponent } from './components/add-page/add-page.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +44,13 @@ import { LogoComponent } from './components/logo/logo.component';
     UpdateBlogComponent,
     SignupComponent,
     LogoComponent,
+    FooterComponent,
+    LayoutComponent,
+    HomePageComponent,
+    SearchPageComponent,
+    ArticlePageComponent,
+    MyPageComponent,
+    AddPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,9 +58,19 @@ import { LogoComponent } from './components/logo/logo.component';
       [
         { path: 'login', component: LoginComponent },
         { path: 'signup', component: SignupComponent },
-        { path: 'home', component: BlogListComponent },
+        {
+          path: '',
+          component: LayoutComponent,
+          children: [
+            { path: '', component: HomePageComponent },
+            { path: 'search', component: SearchPageComponent },
+            { path: 'add', component: AddPageComponent },
+            { path: 'me', component: MyPageComponent },
+            { path: 'blogs/:id', component: ArticlePageComponent },
+          ],
+        },
         { path: 'post', component: PostFormComponent },
-        { path: 'blogs/:id', component: BlogDetailComponent },
+        // { path: 'blogs/:id', component: BlogDetailComponent },
         { path: 'update', component: UpdateBlogComponent },
         {
           path: 'search/:searchKey',

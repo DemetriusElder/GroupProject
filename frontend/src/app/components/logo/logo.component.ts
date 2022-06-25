@@ -6,5 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./logo.component.css'],
 })
 export class LogoComponent {
-  appName: string = 'Ramble';
+  appName: string = 'Blog';
 }

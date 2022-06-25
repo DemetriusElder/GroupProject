@@ -1,0 +1,43 @@
+.banner {
+  background-image: url("https://img.freepik.com/free-vector/watercolor-background_87374-69.jpg?t=st=1656168678~exp=1656169278~hmac=ec27a84a5043338b143d2f134deb63e70670f927615ffdaf77f7634d02d77303&w=1380");
+  height: 480px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.banner-text {
+  max-width: 600px;
+  line-height: 1.5;
+}
+
+.banner-text h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.banner-text p {
+  margin-bottom: 2rem;
+}
+
+.banner-text a {
+  height: 40px;
+  color: white;
+  background: #ea4c89;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 10px 16px;
+  transition: background 200ms ease;
+}
+
+.banner-text a:hover {
+  background: #f082ac;
+}
