@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Blog } from '../models/blog';
+import { Page } from '../models/page';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +11,13 @@ export class BlogService {
 
   constructor(private http: HttpClient) {}
 
-  getBlogs(page: number, size: number): Observable<any> {
-    return this.http.get<Blog[]>(`${this.blogsUrl}?page=${page}&size=${size}`);
+  getBlogs(page: number, size: number): Observable<Page> {
+    return this.http.get<Page>(`${this.blogsUrl}?page=${page}&size=${size}`);
+  }
+
+  searchBlogs(key: string, page: number, size: number): Observable<Page> {
+    return this.http.get<Page>(
+      `${this.blogsUrl}/search?key=${key}&page=${page}&size=${size}`
+    );
   }
 }

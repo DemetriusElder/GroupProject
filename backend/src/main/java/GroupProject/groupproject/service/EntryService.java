@@ -12,7 +12,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Service
 public class EntryService {
@@ -25,7 +24,7 @@ public class EntryService {
     }
 
     public Page<Entry> getAll(int page, int size) {
-        Pageable pageable = PageRequest.of(page, size, Sort.by("date").descending());
+        Pageable pageable = PageRequest.of(page, size, Sort.by("date").ascending());
         return entryRepository.findAll(pageable);
     }
     
@@ -50,8 +49,9 @@ public class EntryService {
         return entryRepository.getById(id);
     }
     
-    public List<Entry> getFilteredEntries(String searchKey){
-    	return entryRepository.getFilteredEntries(searchKey);
+    public Page<Entry> getFilteredEntries(String searchKey, int page, int size){
+        Pageable pageable = PageRequest.of(page, size, Sort.by("date").ascending());
+    	return entryRepository.getFilteredEntries(searchKey, pageable);
     }
     public Entry updateEntry(Entry entry) throws EntryNotFoundException {
     	if (entry.getDate() == null)

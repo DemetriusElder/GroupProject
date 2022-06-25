@@ -27,7 +27,7 @@ export class HomePageComponent implements OnInit {
   getBlogs() {
     this.blogService
       .getBlogs(this.page, this.size)
-      .subscribe(({ content, last }: Page) => {
+      .subscribe(({ content, last }) => {
         this.blogs = [...this.blogs, ...content];
         this.last = last;
       });

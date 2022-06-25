@@ -14,5 +14,5 @@
 </section>
 <section class="blogs">
     <app-blog-list [blogs]="blogs"></app-blog-list>
-    <button class="btn" (click)="onFetchMore()" *ngIf="!last">See More</button>
+    <button class="btn" (click)="onFetchMore()" *ngIf="!last && blogs.length !== 0">See More</button>
 </section>

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule, Routes, ExtraOptions } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -27,7 +27,6 @@ import { SearchPageComponent } from './components/search-page/search-page.compon
 import { ArticlePageComponent } from './components/article-page/article-page.component';
 import { MyPageComponent } from './components/my-page/my-page.component';
 import { AddPageComponent } from './components/add-page/add-page.component';
-import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +51,6 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     ArticlePageComponent,
     MyPageComponent,
     AddPageComponent,
-    SearchBarComponent,
   ],
   imports: [
     BrowserModule,

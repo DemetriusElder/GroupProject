@@ -32,10 +32,11 @@ public class EntryController {
 	public ResponseEntity<Page<Entry>> getEntries(@RequestParam int page, @RequestParam int size) {
 		return new ResponseEntity<>(entryService.getAll(page, size), HttpStatus.OK);
 	}
-	@GetMapping("/count")
-	public ResponseEntity<Long> getEntriesCount() {
-		return new ResponseEntity<Long>(entryService.getTableSize() , HttpStatus.OK); 
-	}
+
+//	@GetMapping("/count")
+//	public ResponseEntity<Long> getEntriesCount() {
+//		return new ResponseEntity<Long>(entryService.getTableSize() , HttpStatus.OK);
+//	}
 
 //	@GetMapping("/pagelist/{pagenumber}")
 //	public List<Entry> getPaginatedList(@PathVariable("pagenumber")int pagenumber) {
@@ -64,10 +65,18 @@ public class EntryController {
 		return new ResponseEntity<>(newEntry, HttpStatus.OK);
 	}
 	
-	@GetMapping("/search/{searchKey}")
-	public List<Entry> getFiltered(@PathVariable("searchKey") String key){
-		return entryService.getFilteredEntries(key);
+//	@GetMapping("/search/{searchKey}")
+//	public List<Entry> getFiltered(@PathVariable("searchKey") String key){
+//		return entryService.getFilteredEntries(key);
+//	}
+
+	@GetMapping("/search")
+	public ResponseEntity<Page<Entry>> searchEntries(@RequestParam String key,
+													 @RequestParam int page,
+													 @RequestParam int size) {
+		return new ResponseEntity<>(entryService.getFilteredEntries(key, page, size), HttpStatus.OK);
 	}
+
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PutMapping
 	public ResponseEntity<Entry> updateEntry(@RequestBody Entry entry) throws EntryNotFoundException{

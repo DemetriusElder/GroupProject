@@ -6,9 +6,12 @@
         100,000+ stories from thousands of inspirational bloggers
     </div>
     <div class="search-bar">
-        <app-search-bar></app-search-bar>
+        <fa-icon [icon]="faSearch" class="search-icon"></fa-icon>
+        <input type="text" name="search" placeholder="Search..." autocomplete="off" [(ngModel)]="key"
+            (ngModelChange)="onInputChange()">
     </div>
 </section>
 <section class="blogs">
-    Blog list here
+    <app-blog-list [blogs]="blogs"></app-blog-list>
+    <button class="btn" (click)="onFetchMore()" *ngIf="!last && blogs.length !== 0">See More</button>
 </section>
