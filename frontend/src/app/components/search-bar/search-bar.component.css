@@ -19,6 +19,7 @@ input {
   margin-left: 12px;
   border: none;
   outline: none;
+  width: 100%;
 }
 
 input::placeholder {
