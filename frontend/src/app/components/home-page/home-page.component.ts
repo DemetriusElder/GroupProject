@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Blog } from 'src/app/models/blog';
-import { Pageable } from 'src/app/models/pageable';
+import { Page } from 'src/app/models/page';
 import { BlogService } from 'src/app/services/blog.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { BlogService } from 'src/app/services/blog.service';
 export class HomePageComponent implements OnInit {
   blogs: Blog[] = [];
   page: number = 0;
-  size: number = 10;
+  size: number = 9;
   last: boolean = false;
 
   constructor(private blogService: BlogService) {}
@@ -27,7 +27,7 @@ export class HomePageComponent implements OnInit {
   getBlogs() {
     this.blogService
       .getBlogs(this.page, this.size)
-      .subscribe(({ content, last }: Pageable) => {
+      .subscribe(({ content, last }: Page) => {
         this.blogs = [...this.blogs, ...content];
         this.last = last;
       });

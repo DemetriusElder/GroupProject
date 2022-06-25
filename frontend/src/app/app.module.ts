@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BlogListComponent } from './components/blog-list/blog-list.component';
-import { BlogPreviewComponent } from './blog-preview/blog-preview.component';
+import { BlogPreviewComponent } from './components/blog-preview/blog-preview.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { PostFormComponent } from './post-form/post-form.component';
 import { ReactiveFormsModule } from '@angular/forms';

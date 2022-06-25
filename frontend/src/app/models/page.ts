@@ -1,6 +1,6 @@
 import { Blog } from './blog';
 
-export interface Pageable {
+export interface Page {
   content: Blog[];
   last: boolean;
 }
