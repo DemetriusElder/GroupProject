@@ -17,7 +17,7 @@
                 <label for="password">Password</label>
                 <input type="password" id="password" formControlName="password" />
             </fieldset>
-            <button type="submit" class="auth-button">Sign In</button>
+            <button type="submit" class="auth-button" [disabled]="!loginForm.valid">Sign In</button>
             <small class="auth-small">Not a member? <a [routerLink]="['/signup']">Sign up now</a></small>
         </form>
     </div>

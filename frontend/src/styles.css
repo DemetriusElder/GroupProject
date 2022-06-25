@@ -25,6 +25,10 @@ main {
   margin-bottom: 40px;
 }
 
+.primary-color {
+  color: #ea4c89;
+}
+
 .auth {
   min-height: 100vh;
   padding: 0 20px;
@@ -58,6 +62,12 @@ main {
 }
 
 .auth-title {
+}
+
+.auth-field {
+  border: none;
+  display: flex;
+  flex-direction: column;
 }
 
 .auth-field label {
@@ -95,10 +105,8 @@ main {
   box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
 }
 
-.auth-field {
-  border: none;
-  display: flex;
-  flex-direction: column;
+.auth-field small {
+  color: #ff5555;
 }
 
 .auth-button {
