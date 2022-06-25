@@ -1,0 +1,30 @@
+<section class="auth">
+    <!-- alert
+    logo -->
+    <div class="auth-left"></div>
+    <div class="auth-right">
+        <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="auth-form">
+            <h2 class="auth-title">Sign up to Rambl</h2>
+            <div class="divided-fields">
+                <fieldset class="auth-field">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" formControlName="firstName" />
+                </fieldset>
+                <fieldset class="auth-field">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" formControlName="lastName" />
+                </fieldset>
+            </div>
+            <fieldset class="auth-field">
+                <label for="username">Username</label>
+                <input type="text" id="username" formControlName="username" />
+            </fieldset>
+            <fieldset class="auth-field">
+                <label for="password">Password</label>
+                <input type="password" id="password" formControlName="password" />
+            </fieldset>
+            <button type="submit" class="auth-button">Sign Up</button>
+            <small class="auth-small">Already a member? <a [routerLink]="['/login']">Sign in now</a></small>
+        </form>
+    </div>
+</section>

@@ -1,7 +1,7 @@
 <section class="auth">
     <!-- alert
     logo -->
-    <div class="auth-left"></div>
+    <div class="auth-left bg"></div>
     <div class="auth-right">
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="auth-form">
             <h2 class="auth-title">Sign in to Rambl</h2>
@@ -15,7 +15,7 @@
                 <input type="password" id="password" formControlName="password" />
             </fieldset>
             <button type="submit" class="auth-button">Sign In</button>
-            <small class="auth-small">Not a member? <a>Sign up now</a></small>
+            <small class="auth-small">Not a member? <a [routerLink]="['/signup']">Sign up now</a></small>
         </form>
     </div>
 </section>

@@ -18,6 +18,7 @@ import { SearchListComponent } from './search-list/search-list.component';
 import { RegisterFormComponent } from './register/register-form.component';
 import { UpdateBlogComponent } from './update-blog/update-blog.component';
 import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -33,16 +34,17 @@ import { LoginComponent } from './components/login/login.component';
     SearchListComponent,
     RegisterFormComponent,
     UpdateBlogComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(
       [
         { path: 'login', component: LoginComponent },
+        { path: 'signup', component: SignupComponent },
         { path: 'home', component: BlogListComponent },
         { path: 'post', component: PostFormComponent },
         { path: 'blogs/:id', component: BlogDetailComponent },
-        { path: 'register', component: RegisterFormComponent },
         { path: 'update', component: UpdateBlogComponent },
         {
           path: 'search/:searchKey',

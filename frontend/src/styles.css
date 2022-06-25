@@ -74,6 +74,7 @@ main {
   background-color: #f2f2f2;
   color: #0d0c22;
   appearance: none;
+  transition: all 200ms ease;
 }
 
 .auth-field input:hover {
@@ -132,7 +133,6 @@ main {
   }
 
   .auth-left {
-    background-image: url("https://img.freepik.com/free-vector/colorful-memphis-style-poster-vector_53876-143598.jpg?t=st=1656121022~exp=1656121622~hmac=41bfcd74250efa04d63d172fb6bae1ee3c8424635d11bc2ec329d28f04131bb7&w=740");
     height: 100%;
     background-size: cover;
     background-position: center;
