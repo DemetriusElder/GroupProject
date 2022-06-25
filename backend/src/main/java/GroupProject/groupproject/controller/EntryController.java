@@ -11,6 +11,7 @@ import GroupProject.groupproject.entity.Entry;
 import GroupProject.groupproject.exception.EntryNotFoundException;
 import GroupProject.groupproject.service.EntryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,30 +29,30 @@ public class EntryController {
 	}
 
 	@GetMapping()
-	public List<Entry> getEntries() {
-		return entryService.getAll();
+	public ResponseEntity<Page<Entry>> getEntries(@RequestParam int page, @RequestParam int size) {
+		return new ResponseEntity<>(entryService.getAll(page, size), HttpStatus.OK);
 	}
 	@GetMapping("/count")
 	public ResponseEntity<Long> getEntriesCount() {
 		return new ResponseEntity<Long>(entryService.getTableSize() , HttpStatus.OK); 
 	}
 
-	@GetMapping("/pagelist/{pagenumber}")
-	public List<Entry> getPaginatedList(@PathVariable("pagenumber")int pagenumber) {
-		int pagesize = 6;
-		int x = pagesize * (pagenumber -1);
-		List<Entry> tempList = entryService.getAll();
-		Collections.reverse(tempList);
-		List<Entry> pageList = new ArrayList<Entry>(pagesize);
-		for(int i = 0; i < pagesize; i++) {
-			if(x < tempList.size()) {
-				pageList.add(tempList.get(x));
-				x++;
-			}
-		}
-		Collections.reverse(pageList);
-		return pageList;
-	}
+//	@GetMapping("/pagelist/{pagenumber}")
+//	public List<Entry> getPaginatedList(@PathVariable("pagenumber")int pagenumber) {
+//		int pagesize = 6;
+//		int x = pagesize * (pagenumber -1);
+//		List<Entry> tempList = entryService.getAll();
+//		Collections.reverse(tempList);
+//		List<Entry> pageList = new ArrayList<Entry>(pagesize);
+//		for(int i = 0; i < pagesize; i++) {
+//			if(x < tempList.size()) {
+//				pageList.add(tempList.get(x));
+//				x++;
+//			}
+//		}
+//		Collections.reverse(pageList);
+//		return pageList;
+//	}
 	@PostMapping()
 	public void postEntry(@RequestBody PostEntryDto postEntryDto) {
 		entryService.addEntries(postEntryDto);

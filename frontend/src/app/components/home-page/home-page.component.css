@@ -23,3 +23,10 @@
 .banner-text p {
   margin-bottom: 2rem;
 }
+
+.blogs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
