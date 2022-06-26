@@ -1,0 +1,24 @@
+<main *ngIf="blog">
+    <div class="metadata">
+        <div>
+            <span class="author">{{ blog.author }}</span> -
+            <span class="time" class="primary-color">{{ blog.date | dateAgo }}</span>
+        </div>
+        <div *ngIf="canDelete() || canEdit()" class="edit-delete">
+            <a routerLink="/edit/{{ blog.id }}">
+                <span *ngIf="canEdit()" class="edit">
+                    <fa-icon [icon]="faPenToSquare"></fa-icon>
+                </span>
+            </a>
+            <span *ngIf="canDelete()" class="delete" (click)="delete()">
+                <fa-icon [icon]="faTrash"></fa-icon>
+            </span>
+        </div>
+    </div>
+    <h1>{{ blog.title }}</h1>
+    <img src="{{ blog.imageUrl }}" alt="image" />
+    <div>
+        {{ blog.content }}
+    </div>
+</main>
+<ng-template #elseBlock>This blog doesn't exist</ng-template>

@@ -1,0 +1,77 @@
+.banner {
+  background-image: url("https://img.freepik.com/free-vector/natural-background-with-mountains-landscape_23-2148257711.jpg?t=st=1656174317~exp=1656174917~hmac=166211996dd6b439725efae5eded953488d1aadd9c2c89236282ddfa39469403&w=1380");
+  height: 400px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+}
+
+.banner-text {
+  color: white;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.banner-text h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.search-bar {
+  position: absolute;
+  bottom: -26px;
+  background-color: white;
+  border-radius: 8px;
+  height: 52px;
+  padding: 0 16px;
+  width: 350px;
+  display: flex;
+  align-items: center;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.search-icon {
+  color: #a9a9ac;
+}
+
+input {
+  font-size: 16px;
+  line-height: 28px;
+  margin-left: 12px;
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+input::placeholder {
+  color: #a9a9ac;
+  opacity: 1;
+}
+
+input:-ms-input-placeholder {
+  color: #a9a9ac;
+}
+
+input::-ms-input-placeholder {
+  color: #a9a9ac;
+}
+
+.blogs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 0;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.search-message {
+  margin-top: 50px;
+}

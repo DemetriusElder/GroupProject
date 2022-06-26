@@ -1,0 +1,18 @@
+<section class="banner">
+    <div class="banner-text">
+        <h1>
+            Search Blog
+        </h1>
+        100,000+ stories from thousands of inspirational bloggers
+    </div>
+    <div class="search-bar">
+        <fa-icon [icon]="faSearch" class="search-icon"></fa-icon>
+        <input type="text" name="search" placeholder="Search..." autocomplete="off" [(ngModel)]="key"
+            (ngModelChange)="onInputChange()">
+    </div>
+</section>
+<section class="blogs">
+    <div *ngIf="blogs.length===0 && key !== ''" class="search-message">No results for "<strong>{{key}}</strong>"</div>
+    <app-blog-list [blogs]="blogs"></app-blog-list>
+    <button class="btn" (click)="onFetchMore()" *ngIf="!last && blogs.length !== 0">See More</button>
+</section>

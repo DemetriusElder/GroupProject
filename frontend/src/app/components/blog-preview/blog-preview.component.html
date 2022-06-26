@@ -1,0 +1,9 @@
+<div class="blog-preview">
+    <a routerLink="/blogs/{{ blog.id }}">
+        <img src="{{blog.imageUrl}}" alt='blog-preview-image' class="blog-preview-image">
+        <div class="blog-preview-title">{{blog.title}}</div>
+        <div class="blog-preview-author"><strong>{{blog.author}}</strong> on
+            <span class="blog-preview-date">{{blog.date | date:'mediumDate'}}</span>
+        </div>
+    </a>
+</div>
