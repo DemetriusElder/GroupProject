@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -11,6 +12,8 @@ import { AuthService } from 'src/app/services/auth.service';
 export class NavbarComponent {
   isAuthenticated: boolean = false;
   user?: User;
+  faAngleDown = faAngleDown;
+  isShowingLogout: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) {
     this.isAuthenticated = this.authService.isAuthenticated();
@@ -22,5 +25,9 @@ export class NavbarComponent {
   logout() {
     this.authService.logout();
     this.router.navigateByUrl('/login');
+  }
+
+  toggleButton() {
+    this.isShowingLogout = !this.isShowingLogout;
   }
 }

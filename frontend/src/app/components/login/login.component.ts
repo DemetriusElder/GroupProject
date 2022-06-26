@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent {
   errorMessage: string = '';
+  isLoading: boolean = false;
 
   loginForm = new FormGroup({
     username: new FormControl(''),
@@ -20,7 +21,9 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   onSubmit(): void {
+    this.isLoading = true;
     this.login();
+    this.isLoading = false;
   }
 
   login() {
@@ -33,8 +36,7 @@ export class LoginComponent {
         (user: User) => {
           this.authService.setUser(user);
         },
-        (error) => {
-          console.log(...error);
+        () => {
           this.errorMessage =
             'We couldn’t find an account matching the username and password you entered. Please check your username and password and try again.';
         },

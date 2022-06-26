@@ -26,6 +26,7 @@ export class AddPageComponent {
     { updateOn: 'submit' }
   );
 
+  isLoading: boolean = false;
   errorMessage: string = '';
 
   constructor(
@@ -35,6 +36,7 @@ export class AddPageComponent {
   ) {}
 
   onSubmit(): void {
+    this.isLoading = true;
     if (!this.postForm.valid) {
       this.postForm.markAllAsTouched();
     } else {
@@ -47,6 +49,7 @@ export class AddPageComponent {
       };
       this.addBlog(blogDto);
     }
+    this.isLoading = false;
   }
 
   get title() {

@@ -19,7 +19,10 @@
                 <label for="password">Password</label>
                 <input type="password" id="password" formControlName="password" />
             </fieldset>
-            <button type="submit" class="btn">Sign In</button>
+            <button type="submit" class="btn" *ngIf="!isLoading">Sign In</button>
+            <button type="submit" class="btn loading" *ngIf="isLoading" disabled="true">
+                Signing in...
+            </button>
             <small class="auth-small">Not a member? <a routerLink="/signup">Sign up now</a></small>
         </form>
     </div>

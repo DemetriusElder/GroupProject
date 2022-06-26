@@ -6,7 +6,13 @@
         </li>
         <li>
             <a routerLink="/login" *ngIf="!isAuthenticated" class="link">Sign In</a>
-            <a *ngIf="isAuthenticated" class="link" (click)="logout()">Log out</a>
+            <div *ngIf="isAuthenticated" class="logout" (click)="toggleButton()">
+                <span [ngClass]="{'link': true,'primary-color': isShowingLogout}">Hi,
+                    <strong>{{user!.fullName}}</strong>
+                    <fa-icon [icon]="faAngleDown" class="icon"></fa-icon>
+                </span>
+                <div (click)="logout()" class="logout-btn" *ngIf="isShowingLogout">Log out</div>
+            </div>
         </li>
         <li>
             <a routerLink="/add" *ngIf="isAuthenticated" class="btn">Share your stories</a>

@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class SignupComponent implements OnInit {
   signupForm!: FormGroup;
   errorMessage: string = '';
+  isLoading: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -33,11 +34,13 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.isLoading = true;
     if (!this.signupForm.valid) {
       this.signupForm.markAllAsTouched();
     } else {
       this.signup();
     }
+    this.isLoading = false;
   }
 
   signup(): void {

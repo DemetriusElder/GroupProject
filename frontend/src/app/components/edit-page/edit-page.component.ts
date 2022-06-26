@@ -26,6 +26,7 @@ export class EditPageComponent implements OnInit {
     { updateOn: 'submit' }
   );
 
+  isLoading: boolean = false;
   errorMessage: string = '';
   id!: number;
   blog?: Blog;
@@ -45,6 +46,7 @@ export class EditPageComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.isLoading = true;
     if (!this.editForm.valid) {
       this.editForm.markAllAsTouched();
     } else {
@@ -56,6 +58,7 @@ export class EditPageComponent implements OnInit {
       };
       this.updateBlog(blogDto);
     }
+    this.isLoading = false;
   }
 
   get title() {

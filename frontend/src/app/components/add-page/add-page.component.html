@@ -30,6 +30,9 @@
             <small *ngIf="content?.touched && content?.errors?.['minlength']">Content
                 must be at least 200 characters</small>
         </fieldset>
-        <button type="submit" class="btn">Share</button>
+        <button type="submit" class="btn" *ngIf="!isLoading">Share</button>
+        <button type="submit" class="btn loading" *ngIf="isLoading" disabled="true">
+            Sharing...
+        </button>
     </form>
 </section>

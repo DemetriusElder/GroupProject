@@ -40,7 +40,10 @@
                 <small *ngIf="password?.touched && password?.errors?.['minlength']">Password
                     must be at least 6 characters</small>
             </fieldset>
-            <button type="submit" class="btn">Sign Up</button>
+            <button type="submit" class="btn" *ngIf="!isLoading">Sign Up</button>
+            <button type="submit" class="btn loading" *ngIf="isLoading" disabled="true">
+                Signing up...
+            </button>
             <small class="auth-small">Already a member? <a routerLink="/login">Sign in now</a></small>
         </form>
     </div>
