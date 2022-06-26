@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Blog } from 'src/app/models/blog';
 import { Page } from 'src/app/models/page';
+import { AuthService } from 'src/app/services/auth.service';
 import { BlogService } from 'src/app/services/blog.service';
 
 @Component({
@@ -13,8 +14,14 @@ export class HomePageComponent implements OnInit {
   page: number = 0;
   size: number = 9;
   last: boolean = false;
+  isAuthenticated: boolean = false;
 
-  constructor(private blogService: BlogService) {}
+  constructor(
+    private blogService: BlogService,
+    private authService: AuthService
+  ) {
+    this.isAuthenticated = this.authService.isAuthenticated();
+  }
 
   ngOnInit(): void {
     this.getBlogs();

@@ -159,7 +159,20 @@ a {
   background: #f082ac;
 }
 
+.link {
+  cursor: pointer;
+}
+
 .link:hover {
   color: #ea4c89;
   transition: color 200ms ease;
+}
+
+.red-alert {
+  background-color: #ff5555;
+  height: 52px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

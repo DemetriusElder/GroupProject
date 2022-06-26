@@ -10,8 +10,7 @@ import { BlogPreviewComponent } from './components/blog-preview/blog-preview.com
 import { ReactiveFormsModule } from '@angular/forms';
 import { DateAgoPipe } from './pipes/date-ago.pipe';
 import { FormsModule } from '@angular/forms';
-import { BasicAuthInterceptorService } from './basic-auth-interceptor.service';
-import { LogoutComponent } from './logout/logout.component';
+// import { BasicAuthInterceptorService } from './basic-auth-interceptor.service';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LogoComponent } from './components/logo/logo.component';
@@ -31,7 +30,6 @@ import { AddPageComponent } from './components/add-page/add-page.component';
     BlogPreviewComponent,
     DateAgoPipe,
     LoginComponent,
-    LogoutComponent,
     SignupComponent,
     LogoComponent,
     FooterComponent,
@@ -67,13 +65,13 @@ import { AddPageComponent } from './components/add-page/add-page.component';
     ReactiveFormsModule,
     FormsModule,
   ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: BasicAuthInterceptorService,
-      multi: true,
-    },
-  ],
+  // providers: [
+  //   {
+  //     provide: HTTP_INTERCEPTORS,
+  //     useClass: BasicAuthInterceptorService,
+  //     multi: true,
+  //   },
+  // ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

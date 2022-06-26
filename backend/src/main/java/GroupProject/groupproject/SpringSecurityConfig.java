@@ -9,6 +9,8 @@ import org.springframework.security.config.annotation.authentication.builders.*;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
@@ -37,10 +39,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
             .authorizeRequests()
             .antMatchers(HttpMethod.GET).permitAll()
-            .antMatchers(HttpMethod.GET, "/basicauth").permitAll()
-            .antMatchers(HttpMethod.POST, "/auth-users").permitAll()
-            .antMatchers(HttpMethod.OPTIONS, "/**")
-            .permitAll()
+            .antMatchers(HttpMethod.POST, "/auth-users/signup").permitAll()
             .anyRequest()
             .authenticated();
     }

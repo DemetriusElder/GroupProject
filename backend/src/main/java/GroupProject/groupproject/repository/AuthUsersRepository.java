@@ -14,8 +14,6 @@ public interface AuthUsersRepository extends JpaRepository<AuthUsers, Long>{
 	List<AuthUsers> findAll();
 
 	AuthUsers getById(Long id);
-	    
-	AuthUsers getByUsername(String username);
 
 	boolean existsById(Long id);
 	    

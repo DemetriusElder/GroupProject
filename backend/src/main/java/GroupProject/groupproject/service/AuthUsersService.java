@@ -1,12 +1,15 @@
 package GroupProject.groupproject.service;
 
+import GroupProject.groupproject.dto.LoginAuthUsersDto;
 import GroupProject.groupproject.dto.RegisterAuthUsersDto;
+import GroupProject.groupproject.dto.UserResponseDto;
 import GroupProject.groupproject.entity.AuthUsers;
 import GroupProject.groupproject.entity.Role;
 import GroupProject.groupproject.exception.EntryNotFoundException;
 import GroupProject.groupproject.exception.UserAlreadyExistException;
 import GroupProject.groupproject.repository.AuthUsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -44,7 +47,9 @@ public class AuthUsersService {
         if (!authUsersRepository.existsByUsername(username)) {
             throw new EntryNotFoundException();
         }
-        return authUsersRepository.getByUsername(username);
+        return authUsersRepository
+                .findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException(""));
     }
     
     public List<AuthUsers> getFilteredAuthUsers(String searchKey){
@@ -67,5 +72,19 @@ public class AuthUsersService {
         authUsers.setEntries(Collections.emptyList());
         authUsers.setRole(role);
         authUsersRepository.save(authUsers);
+    }
+
+    public UserResponseDto login(LoginAuthUsersDto loginAuthUsersDto) {
+
+        AuthUsers users = authUsersRepository
+                .findByUsername(loginAuthUsersDto.getUsername())
+                .orElseThrow(() -> new UsernameNotFoundException(""));
+
+        return new UserResponseDto(users.getId(),
+                                   users.getUsername(),
+                                   loginAuthUsersDto.getPassword(),
+                                   users.getFullName(),
+                                   users.getRole());
+
     }
 }

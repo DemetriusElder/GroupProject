@@ -1,23 +1,30 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private readonly AUTH_URL = 'http://localhost:8080/basicauth';
-  private readonly USERNAME_LOCAL_STORAGE = 'g4-username';
-  private readonly FULLNAME_LOCAL_STORAGE = 'g4-fullname';
-  private readonly PASSWORD_LOCAL_STORAGE = 'g4-password';
+  private readonly AUTH_URL = 'http://localhost:8080/auth-users';
+  private readonly USER_LOCAL_STORAGE = 'group4-user';
 
   constructor(private http: HttpClient) {}
 
-  authenticate(username: string, password: string) {
-    this.http.get(this.AUTH_URL, {
-      headers: {
-        authorization: this.createBasicAuthToken(username, password),
+  authenticate(username: string, password: string): Observable<User> {
+    return this.http.post<User>(
+      `${this.AUTH_URL}/login`,
+      {
+        username,
+        password,
       },
-    });
+      {
+        headers: {
+          authorization: this.createBasicAuthToken(username, password),
+        },
+      }
+    );
   }
 
   createBasicAuthToken(username: string, password: string): string {
@@ -25,29 +32,35 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    const username = localStorage.getItem(this.USERNAME_LOCAL_STORAGE);
-    return username !== null;
+    const user = localStorage.getItem(this.USER_LOCAL_STORAGE);
+    return user !== null;
   }
 
-  setUsername(username: string): void {
-    localStorage.setItem(this.USERNAME_LOCAL_STORAGE, username);
+  setUser(user: User): void {
+    localStorage.setItem(this.USER_LOCAL_STORAGE, JSON.stringify(user));
   }
 
-  setPassword(password: string): void {
-    localStorage.setItem(this.PASSWORD_LOCAL_STORAGE, password);
+  getUser(): User | null {
+    const stringifiedUser = localStorage.getItem(this.USER_LOCAL_STORAGE);
+    if (stringifiedUser !== null) {
+      return JSON.parse(stringifiedUser);
+    }
+    return null;
   }
 
-  setFullName(fullName: string): void {
-    localStorage.setItem(this.FULLNAME_LOCAL_STORAGE, fullName);
+  logout(): void {
+    localStorage.removeItem(this.USER_LOCAL_STORAGE);
   }
 
-  getFullName() {
-    return localStorage.getItem(this.FULLNAME_LOCAL_STORAGE);
-  }
-
-  logout() {
-    localStorage.removeItem(this.USERNAME_LOCAL_STORAGE);
-    localStorage.removeItem(this.PASSWORD_LOCAL_STORAGE);
-    localStorage.removeItem(this.FULLNAME_LOCAL_STORAGE);
+  signup(
+    fullName: string,
+    username: string,
+    password: string
+  ): Observable<void> {
+    return this.http.post<void>(`${this.AUTH_URL}/signup`, {
+      fullName,
+      username,
+      password,
+    });
   }
 }

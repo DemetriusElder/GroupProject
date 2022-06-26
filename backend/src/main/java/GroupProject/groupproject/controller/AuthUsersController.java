@@ -2,7 +2,9 @@ package GroupProject.groupproject.controller;
 
 import java.util.List;
 
+import GroupProject.groupproject.dto.LoginAuthUsersDto;
 import GroupProject.groupproject.dto.RegisterAuthUsersDto;
+import GroupProject.groupproject.dto.UserResponseDto;
 import GroupProject.groupproject.entity.AuthUsers;
 import GroupProject.groupproject.exception.EntryNotFoundException;
 import GroupProject.groupproject.exception.UserAlreadyExistException;
@@ -31,9 +33,15 @@ public class AuthUsersController {
 		return authusersService.getAll();
 	}
 
-	@PostMapping()
+	@PostMapping("/signup")
+	@ResponseStatus(HttpStatus.CREATED)
 	public void postAuthUsers(@Valid @RequestBody RegisterAuthUsersDto registerAuthUsersDto) throws UserAlreadyExistException {
 		authusersService.addAuthUsers(registerAuthUsersDto);
+	}
+
+	@PostMapping("/login")
+	public UserResponseDto login(@RequestBody LoginAuthUsersDto loginAuthUsersDto) throws UserAlreadyExistException {
+		return authusersService.login(loginAuthUsersDto);
 	}
 
 	// make this long so no one can find this endpoint
