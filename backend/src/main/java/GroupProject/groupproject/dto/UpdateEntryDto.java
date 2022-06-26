@@ -3,10 +3,7 @@ package GroupProject.groupproject.dto;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-public class PostEntryDto {
-
-    @NotBlank(message = "Author cannot be empty")
-    private final String author;
+public class UpdateEntryDto {
 
     @Size(min = 200, message = "Content must be at least 200 characters")
     private final String content;
@@ -17,15 +14,10 @@ public class PostEntryDto {
     @Size(min = 15, message = "Title must be at least 15 characters")
     private final String title;
 
-    public PostEntryDto(String author, String content, String imageUrl, String title) {
-        this.author = author;
+    public UpdateEntryDto(String content, String imageUrl, String title) {
         this.content = content;
         this.imageUrl = imageUrl;
         this.title = title;
-    }
-
-    public String getAuthor() {
-        return author;
     }
 
     public String getContent() {

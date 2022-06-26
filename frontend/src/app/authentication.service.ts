@@ -9,12 +9,12 @@ export class AuthenticationService {
   // BASE_PATH: 'http://localhost:8080'
   USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser';
 
-  username!: String | null;
-  password!: String | null;
+  username?: string | null;
+  password?: string | null;
 
   constructor(private http: HttpClient) {}
 
-  authenticationService(username: String, password: String) {
+  authenticationService(username: string, password: string) {
     return this.http
       .get(`http://localhost:8080/api/v1/basicauth`, {
         headers: {
@@ -30,15 +30,12 @@ export class AuthenticationService {
       );
   }
 
-  createBasicAuthToken(username: String, password: String) {
+  createBasicAuthToken(username: string, password: string): string {
     return 'Basic ' + window.btoa(username + ':' + password);
   }
 
-  registerSuccessfulLogin(username: String, password: String) {
-    sessionStorage.setItem(
-      this.USER_NAME_SESSION_ATTRIBUTE_NAME,
-      username as string
-    );
+  registerSuccessfulLogin(username: string, password: string) {
+    sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, username);
   }
 
   logout() {

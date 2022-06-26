@@ -11,7 +11,7 @@ export class AddPageComponent {
     {
       title: new FormControl('', [
         Validators.required,
-        Validators.minLength(20),
+        Validators.minLength(15),
       ]),
       imageUrl: new FormControl('', [Validators.required]),
       content: new FormControl('', [

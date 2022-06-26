@@ -6,21 +6,23 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface AuthUsersRepository extends JpaRepository<AuthUsers, Long>{
 	
-	 	List<AuthUsers> findAll();
+	List<AuthUsers> findAll();
 
-	    AuthUsers getById(Long id);
+	AuthUsers getById(Long id);
 	    
-	    AuthUsers getByUsername(String username);
+	AuthUsers getByUsername(String username);
 
-	    boolean existsById(Long id);
+	boolean existsById(Long id);
 	    
-	    boolean existsByUsername(String username);
+	boolean existsByUsername(String username);
 	    
-	    @Query("SELECT e FROM AuthUsers e WHERE CONCAT(e.username, e.password, e.role) LIKE %?1%")
-	    List<AuthUsers> getFilteredAuthUsers(String searchKey);
+	@Query("SELECT e FROM AuthUsers e WHERE CONCAT(e.username, e.password, e.role) LIKE %?1%")
+	List<AuthUsers> getFilteredAuthUsers(String searchKey);
 
+	Optional<AuthUsers> findByUsername(String username);
 }

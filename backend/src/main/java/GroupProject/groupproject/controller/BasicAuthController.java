@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 import GroupProject.groupproject.AuthenticationBean;
 
 
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("basicauth")
 public class BasicAuthController {
 
-    @GetMapping(path = "/basicauth")
+    @GetMapping()
     public AuthenticationBean basicauth() {
         return new AuthenticationBean("You are authenticated");
     }

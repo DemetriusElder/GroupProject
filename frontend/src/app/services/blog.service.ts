@@ -8,21 +8,21 @@ import { Page } from '../models/page';
   providedIn: 'root',
 })
 export class BlogService {
-  private blogsUrl = 'http://localhost:8080/entries';
+  private readonly BLOG_URL = 'http://localhost:8080/entries';
 
   constructor(private http: HttpClient) {}
 
   getBlogs(page: number, size: number): Observable<Page> {
-    return this.http.get<Page>(`${this.blogsUrl}?page=${page}&size=${size}`);
+    return this.http.get<Page>(`${this.BLOG_URL}?page=${page}&size=${size}`);
   }
 
   searchBlogs(key: string, page: number, size: number): Observable<Page> {
     return this.http.get<Page>(
-      `${this.blogsUrl}/search?key=${key}&page=${page}&size=${size}`
+      `${this.BLOG_URL}/search?key=${key}&page=${page}&size=${size}`
     );
   }
 
   getBlogById(id: number): Observable<Blog> {
-    return this.http.get<Blog>(`${this.blogsUrl}/${id}`);
+    return this.http.get<Blog>(`${this.BLOG_URL}/${id}`);
   }
 }

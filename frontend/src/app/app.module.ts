@@ -7,14 +7,11 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BlogListComponent } from './components/blog-list/blog-list.component';
 import { BlogPreviewComponent } from './components/blog-preview/blog-preview.component';
-import { BlogDetailComponent } from './blog-detail/blog-detail.component';
-import { PostFormComponent } from './post-form/post-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DateAgoPipe } from './pipes/date-ago.pipe';
 import { FormsModule } from '@angular/forms';
 import { BasicAuthInterceptorService } from './basic-auth-interceptor.service';
 import { LogoutComponent } from './logout/logout.component';
-import { SearchListComponent } from './search-list/search-list.component';
 import { RegisterFormComponent } from './register/register-form.component';
 import { UpdateBlogComponent } from './update-blog/update-blog.component';
 import { LoginComponent } from './components/login/login.component';
@@ -34,12 +31,9 @@ import { AddPageComponent } from './components/add-page/add-page.component';
     NavbarComponent,
     BlogListComponent,
     BlogPreviewComponent,
-    BlogDetailComponent,
-    PostFormComponent,
     DateAgoPipe,
     LoginComponent,
     LogoutComponent,
-    SearchListComponent,
     RegisterFormComponent,
     UpdateBlogComponent,
     SignupComponent,
@@ -69,15 +63,7 @@ import { AddPageComponent } from './components/add-page/add-page.component';
             { path: 'blogs/:id', component: ArticlePageComponent },
           ],
         },
-        { path: 'post', component: PostFormComponent },
-        // { path: 'blogs/:id', component: BlogDetailComponent },
         { path: 'update', component: UpdateBlogComponent },
-        {
-          path: 'search/:searchKey',
-          component: SearchListComponent,
-          //canActivate: [AuthenticationGuard],
-          runGuardsAndResolvers: 'paramsOrQueryParamsChange',
-        },
       ],
       { onSameUrlNavigation: 'reload' }
     ),

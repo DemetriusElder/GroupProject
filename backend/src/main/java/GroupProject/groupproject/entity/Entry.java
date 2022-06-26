@@ -23,6 +23,10 @@ public class Entry {
 	
 	private LocalDateTime date;
 
+	@ManyToOne
+	@JoinColumn(name="user_id", nullable = false)
+	private AuthUsers user;
+
 	@Lob
 	private String content;
 

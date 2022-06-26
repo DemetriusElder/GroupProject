@@ -2,17 +2,21 @@ package GroupProject.groupproject.controller;
 
 import java.util.List;
 
-import GroupProject.groupproject.dto.AuthUsersDto;
+import GroupProject.groupproject.dto.RegisterAuthUsersDto;
 import GroupProject.groupproject.entity.AuthUsers;
 import GroupProject.groupproject.exception.EntryNotFoundException;
+import GroupProject.groupproject.exception.UserAlreadyExistException;
 import GroupProject.groupproject.service.AuthUsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
+
 @RestController()
-@RequestMapping("authusers")
+@RequestMapping("auth-users")
 public class AuthUsersController {
 
 	private final AuthUsersService authusersService;
@@ -28,8 +32,14 @@ public class AuthUsersController {
 	}
 
 	@PostMapping()
-	public void postAuthUsers(@RequestBody AuthUsersDto authusersDto) {
-		authusersService.addAuthUsers(authusersDto);
+	public void postAuthUsers(@Valid @RequestBody RegisterAuthUsersDto registerAuthUsersDto) throws UserAlreadyExistException {
+		authusersService.addAuthUsers(registerAuthUsersDto);
+	}
+
+	// make this long so no one can find this endpoint
+	@PostMapping("/this-is-an-endpoint-to-create-admin-hehe")
+	public void postAdmin(@Valid @RequestBody RegisterAuthUsersDto registerAuthUsersDto) throws UserAlreadyExistException {
+		authusersService.addAddmin(registerAuthUsersDto);
 	}
 	
 	@GetMapping("/{id}")

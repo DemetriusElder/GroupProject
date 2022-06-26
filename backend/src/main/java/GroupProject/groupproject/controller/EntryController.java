@@ -5,8 +5,10 @@ import java.util.List;
 import java.util.*;
 
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 
 import GroupProject.groupproject.dto.PostEntryDto;
+import GroupProject.groupproject.dto.UpdateEntryDto;
 import GroupProject.groupproject.entity.Entry;
 import GroupProject.groupproject.exception.EntryNotFoundException;
 import GroupProject.groupproject.service.EntryService;
@@ -54,6 +56,7 @@ public class EntryController {
 //		Collections.reverse(pageList);
 //		return pageList;
 //	}
+
 	@PostMapping()
 	public void postEntry(@RequestBody PostEntryDto postEntryDto) {
 		entryService.addEntries(postEntryDto);
@@ -77,16 +80,15 @@ public class EntryController {
 		return new ResponseEntity<>(entryService.getFilteredEntries(key, page, size), HttpStatus.OK);
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200")
-	@PutMapping
-	public ResponseEntity<Entry> updateEntry(@RequestBody Entry entry) throws EntryNotFoundException{
-		Entry updateEntry = entryService.updateEntry(entry);
+	@PutMapping("/{id}")
+	public ResponseEntity<Entry> updateEntry(@Valid @RequestBody UpdateEntryDto updateEntryDto,
+											 @PathVariable Long id) throws EntryNotFoundException {
+		Entry updateEntry = entryService.updateEntry(updateEntryDto, id);
 		return new ResponseEntity<>(updateEntry, HttpStatus.OK);
 	}
-	@CrossOrigin(origins = "http://localhost:4200")
-	@Transactional
-	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<?> deleteEntry(@PathVariable("id") Long id){
+
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> deleteEntry(@PathVariable("id") Long id) throws EntryNotFoundException {
 		entryService.deleteEntry(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}

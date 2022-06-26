@@ -1,6 +1,7 @@
 package GroupProject.groupproject.service;
 
 import GroupProject.groupproject.dto.PostEntryDto;
+import GroupProject.groupproject.dto.UpdateEntryDto;
 import GroupProject.groupproject.entity.Entry;
 import GroupProject.groupproject.exception.EntryNotFoundException;
 import GroupProject.groupproject.repository.EntryRepository;
@@ -24,7 +25,7 @@ public class EntryService {
     }
 
     public Page<Entry> getAll(int page, int size) {
-        Pageable pageable = PageRequest.of(page, size, Sort.by("date").ascending());
+        Pageable pageable = PageRequest.of(page, size, Sort.by("date").descending());
         return entryRepository.findAll(pageable);
     }
     
@@ -42,7 +43,6 @@ public class EntryService {
         entryRepository.save(newEntry);
     }
     public Entry getById(Long id) throws EntryNotFoundException {
-        System.out.println(id);
         if (!entryRepository.existsById(id)) {
             throw new EntryNotFoundException();
         }
@@ -50,17 +50,23 @@ public class EntryService {
     }
     
     public Page<Entry> getFilteredEntries(String searchKey, int page, int size){
-        Pageable pageable = PageRequest.of(page, size, Sort.by("date").ascending());
+        Pageable pageable = PageRequest.of(page, size, Sort.by("date").descending());
     	return entryRepository.getFilteredEntries(searchKey, pageable);
     }
-    public Entry updateEntry(Entry entry) throws EntryNotFoundException {
-    	if (entry.getDate() == null)
-    	{
-    		entry.setDate(getById(entry.getId()).getDate());
-    	}
-    	return entryRepository.save(entry);
+    public Entry updateEntry(UpdateEntryDto updateEntryDto, Long id) throws EntryNotFoundException {
+        if (!entryRepository.existsById(id)) {
+            throw new EntryNotFoundException();
+        }
+        Entry existingEntry = entryRepository.getById(id);
+        existingEntry.setTitle(updateEntryDto.getTitle());
+        existingEntry.setContent(updateEntryDto.getContent());
+        existingEntry.setImageUrl(updateEntryDto.getImageUrl());
+    	return entryRepository.save(existingEntry);
     }
-    public void deleteEntry(Long id) {
+    public void deleteEntry(Long id) throws EntryNotFoundException {
+        if (!entryRepository.existsById(id)) {
+            throw new EntryNotFoundException();
+        }
     	entryRepository.deleteEntryById(id);
     }
 }
