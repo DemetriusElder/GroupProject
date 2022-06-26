@@ -25,4 +25,5 @@ public interface EntryRepository extends JpaRepository<Entry, Long> {
     
     @Query("SELECT e FROM Entry e WHERE LOWER(CONCAT(e.title, e.author, e.content)) LIKE %?1%")
     Page<Entry> getFilteredEntries(String searchKey, Pageable pageable);
+
 }
