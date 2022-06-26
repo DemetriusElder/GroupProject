@@ -1,0 +1,13 @@
+footer {
+  height: 100%;
+  background: #eeeeee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+a {
+  color: #ea4c89;
+}
