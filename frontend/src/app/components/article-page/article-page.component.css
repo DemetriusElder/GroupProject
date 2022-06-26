@@ -29,3 +29,35 @@ div {
   font-size: 0.75rem;
   font-weight: bold;
 }
+
+.metadata {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-delete {
+  display: flex;
+  gap: 40px;
+}
+
+.edit-delete span {
+  cursor: pointer;
+}
+
+.edit {
+  color: #a9a9ac;
+  transition: color 200ms ease;
+}
+
+.edit:hover {
+  color: black;
+}
+
+.delete {
+  color: #a9a9ac;
+  transition: color 200ms ease;
+}
+
+.delete:hover {
+  color: #ff5555;
+}

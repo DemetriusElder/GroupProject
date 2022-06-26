@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { catchError } from 'rxjs';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -34,9 +33,11 @@ export class LoginComponent {
         (user: User) => {
           this.authService.setUser(user);
         },
-        () =>
-          (this.errorMessage =
-            'We couldn’t find an account matching the username and password you entered. Please check your username and password and try again.'),
+        (error) => {
+          console.log(...error);
+          this.errorMessage =
+            'We couldn’t find an account matching the username and password you entered. Please check your username and password and try again.';
+        },
         () => this.router.navigateByUrl('/')
       );
   }

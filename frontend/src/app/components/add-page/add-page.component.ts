@@ -60,15 +60,15 @@ export class AddPageComponent {
   }
 
   addBlog(blogDto: BlogDto) {
-    const authToken = this.authService.createBasicAuthToken();
-    if (authToken === null) {
-      this.authService.logout();
-    } else {
-      this.blogService.addBlog(blogDto, authToken).subscribe(
-        null,
-        () => (this.errorMessage = 'Something wrong'),
-        () => this.router.navigateByUrl('/')
-      );
-    }
+    const authToken = this.authService.createBasicAuthToken(
+      this.authService.getUsername()!,
+      this.authService.getPassword()!
+    );
+    console.log(authToken);
+    this.blogService.addBlog(blogDto, authToken).subscribe(
+      null,
+      () => (this.errorMessage = 'Something wrong'),
+      () => this.router.navigateByUrl('/')
+    );
   }
 }

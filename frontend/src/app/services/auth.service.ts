@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Role } from '../models/role';
 import { User } from '../models/user';
 
 @Injectable({
@@ -21,20 +22,14 @@ export class AuthService {
       },
       {
         headers: {
-          authorization: this.createBasicAuthToken()!,
+          authorization: this.createBasicAuthToken(username, password),
         },
       }
     );
   }
 
-  createBasicAuthToken(): string | null {
-    if (this.isAuthenticated()) {
-      const { username, password }: User = JSON.parse(
-        localStorage.getItem(this.USER_LOCAL_STORAGE)!
-      );
-      return 'Basic ' + window.btoa(username + ':' + password);
-    }
-    return null;
+  createBasicAuthToken(username: string, password: string): string {
+    return 'Basic ' + btoa(username + ':' + password);
   }
 
   isAuthenticated(): boolean {
@@ -70,6 +65,27 @@ export class AuthService {
       return this.getUser()?.fullName;
     }
     return null;
+  }
+
+  getPassword() {
+    if (this.getUser() !== null) {
+      return this.getUser()?.password;
+    }
+    return null;
+  }
+
+  getRole() {
+    if (this.getUser() !== null) {
+      return this.getUser()?.role;
+    }
+    return null;
+  }
+
+  isAdmin() {
+    if (this.getUser() === null) {
+      return false;
+    }
+    return this.getUser()?.role === Role.ADMIN;
   }
 
   signup(

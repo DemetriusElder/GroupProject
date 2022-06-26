@@ -39,4 +39,19 @@ export class BlogService {
       }
     );
   }
+
+  deleteBlog(
+    username: string,
+    authToken: string,
+    id: number
+  ): Observable<void> {
+    return this.http.delete<void>(`${this.BLOG_URL}/${id}`, {
+      headers: {
+        authorization: authToken,
+      },
+      body: {
+        username,
+      },
+    });
+  }
 }
