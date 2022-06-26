@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Blog } from '../models/blog';
+import { Blog, BlogDto } from '../models/blog';
 import { Page } from '../models/page';
 
 @Injectable({
@@ -24,5 +24,19 @@ export class BlogService {
 
   getBlogById(id: number): Observable<Blog> {
     return this.http.get<Blog>(`${this.BLOG_URL}/${id}`);
+  }
+
+  addBlog(blogDto: BlogDto, authToken: string): Observable<void> {
+    return this.http.post<void>(
+      `${this.BLOG_URL}`,
+      {
+        ...blogDto,
+      },
+      {
+        headers: {
+          authorization: authToken,
+        },
+      }
+    );
   }
 }

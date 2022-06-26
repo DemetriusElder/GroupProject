@@ -69,7 +69,6 @@ public class AuthUsersService {
         authUsers.setUsername(registerAuthUsersDto.getUsername());
         authUsers.setPassword(passwordEncoder.encode(registerAuthUsersDto.getPassword()));
         authUsers.setFullName(registerAuthUsersDto.getFullName());
-        authUsers.setEntries(Collections.emptyList());
         authUsers.setRole(role);
         authUsersRepository.save(authUsers);
     }

@@ -24,7 +24,7 @@
         </fieldset>
         <fieldset class="auth-field">
             <label for="content">Content</label>
-            <textarea cols="30" rows="20"></textarea>
+            <textarea cols="30" rows="20" formControlName="content"></textarea>
             <small *ngIf="content?.touched && content?.errors?.['required']">Content
                 is required</small>
             <small *ngIf="content?.touched && content?.errors?.['minlength']">Content

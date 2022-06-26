@@ -1,5 +1,6 @@
 package GroupProject.groupproject.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -22,6 +23,7 @@ public class AuthUsers {
 
 	private String fullName;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	private List<Entry> entries;
 

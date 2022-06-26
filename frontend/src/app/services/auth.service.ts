@@ -21,14 +21,20 @@ export class AuthService {
       },
       {
         headers: {
-          authorization: this.createBasicAuthToken(username, password),
+          authorization: this.createBasicAuthToken()!,
         },
       }
     );
   }
 
-  createBasicAuthToken(username: string, password: string): string {
-    return 'Basic ' + window.btoa(username + ':' + password);
+  createBasicAuthToken(): string | null {
+    if (this.isAuthenticated()) {
+      const { username, password }: User = JSON.parse(
+        localStorage.getItem(this.USER_LOCAL_STORAGE)!
+      );
+      return 'Basic ' + window.btoa(username + ':' + password);
+    }
+    return null;
   }
 
   isAuthenticated(): boolean {
@@ -50,6 +56,20 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem(this.USER_LOCAL_STORAGE);
+  }
+
+  getUsername() {
+    if (this.getUser() !== null) {
+      return this.getUser()?.username;
+    }
+    return null;
+  }
+
+  getFullName() {
+    if (this.getUser() !== null) {
+      return this.getUser()?.fullName;
+    }
+    return null;
   }
 
   signup(

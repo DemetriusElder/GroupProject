@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { BlogDto } from 'src/app/models/blog';
+import { AuthService } from 'src/app/services/auth.service';
+import { BlogService } from 'src/app/services/blog.service';
 
 @Component({
   selector: 'app-add-page',
@@ -22,11 +26,27 @@ export class AddPageComponent {
     { updateOn: 'submit' }
   );
 
+  errorMessage: string = '';
+
+  constructor(
+    private authService: AuthService,
+    private blogService: BlogService,
+    private router: Router
+  ) {}
+
   onSubmit(): void {
     if (!this.postForm.valid) {
       this.postForm.markAllAsTouched();
+    } else {
+      const blogDto: BlogDto = {
+        imageUrl: this.postForm.get('imageUrl')?.value,
+        title: this.postForm.get('title')?.value,
+        content: this.postForm.get('content')?.value,
+        author: this.authService.getFullName()!,
+        username: this.authService.getUsername()!,
+      };
+      this.addBlog(blogDto);
     }
-    console.log(this.postForm.value);
   }
 
   get title() {
@@ -37,5 +57,18 @@ export class AddPageComponent {
   }
   get content() {
     return this.postForm.get('content');
+  }
+
+  addBlog(blogDto: BlogDto) {
+    const authToken = this.authService.createBasicAuthToken();
+    if (authToken === null) {
+      this.authService.logout();
+    } else {
+      this.blogService.addBlog(blogDto, authToken).subscribe(
+        null,
+        () => (this.errorMessage = 'Something wrong'),
+        () => this.router.navigateByUrl('/')
+      );
+    }
   }
 }

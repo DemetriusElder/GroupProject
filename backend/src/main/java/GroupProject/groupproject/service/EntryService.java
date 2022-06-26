@@ -2,8 +2,11 @@ package GroupProject.groupproject.service;
 
 import GroupProject.groupproject.dto.PostEntryDto;
 import GroupProject.groupproject.dto.UpdateEntryDto;
+import GroupProject.groupproject.entity.AuthUsers;
 import GroupProject.groupproject.entity.Entry;
 import GroupProject.groupproject.exception.EntryNotFoundException;
+import GroupProject.groupproject.exception.UsernameNotFoundException;
+import GroupProject.groupproject.repository.AuthUsersRepository;
 import GroupProject.groupproject.repository.EntryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,10 +21,12 @@ import java.time.LocalDateTime;
 public class EntryService {
 
     private final EntryRepository entryRepository;
+    private final AuthUsersRepository authUsersRepository;
 
     @Autowired
-    public EntryService(EntryRepository entryRepository) {
+    public EntryService(EntryRepository entryRepository, AuthUsersRepository authUsersRepository) {
         this.entryRepository = entryRepository;
+        this.authUsersRepository = authUsersRepository;
     }
 
     public Page<Entry> getAll(int page, int size) {
@@ -33,13 +38,18 @@ public class EntryService {
     	return entryRepository.count();
     }
 
-    public void addEntries(PostEntryDto postEntryDto) {
+    public void addEntries(PostEntryDto postEntryDto) throws UsernameNotFoundException {
+
+        AuthUsers user = authUsersRepository.findByUsername(postEntryDto.getUsername()).orElseThrow(
+                UsernameNotFoundException::new);
+
         Entry newEntry = new Entry();
-        newEntry.setAuthor(postEntryDto.getAuthor());
         newEntry.setContent(postEntryDto.getContent());
         newEntry.setTitle(postEntryDto.getTitle());
         newEntry.setImageUrl(postEntryDto.getImageUrl());
         newEntry.setDate(LocalDateTime.now());
+        newEntry.setAuthor(postEntryDto.getAuthor());
+        newEntry.setUser(user);
         entryRepository.save(newEntry);
     }
     public Entry getById(Long id) throws EntryNotFoundException {

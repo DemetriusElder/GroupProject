@@ -11,6 +11,7 @@ import GroupProject.groupproject.dto.PostEntryDto;
 import GroupProject.groupproject.dto.UpdateEntryDto;
 import GroupProject.groupproject.entity.Entry;
 import GroupProject.groupproject.exception.EntryNotFoundException;
+import GroupProject.groupproject.exception.UsernameNotFoundException;
 import GroupProject.groupproject.service.EntryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -57,8 +58,9 @@ public class EntryController {
 //		return pageList;
 //	}
 
+	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping()
-	public void postEntry(@RequestBody PostEntryDto postEntryDto) {
+	public void postEntry(@RequestBody PostEntryDto postEntryDto) throws UsernameNotFoundException {
 		entryService.addEntries(postEntryDto);
 	}
 	
