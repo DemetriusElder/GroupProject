@@ -14,6 +14,9 @@ export class RegisterFormComponent implements OnInit {
   role!: string;
   errorMessage = 'Invalid Credentials';
   successMessage!: string;
+  x?: number;
+  invalidRegister = false;
+  registerSuccess = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -37,8 +40,22 @@ export class RegisterFormComponent implements OnInit {
       password: this.password,
       role: this.role,
     };
-    console.log(authuser);
-    this.blogService.postAuthUsers(authuser).subscribe();
-    this.router.navigate(['login']);
+    this.blogService.postAuthUsers(authuser).subscribe((x) => {
+      this.x = x;
+      if( this.x == 0){
+        this.invalidRegister = false;
+        this.registerSuccess = true;
+        this.successMessage = 'Register Successful.';
+        this.router.navigate(['login']);
+      }
+      else{
+      this.invalidRegister = true;
+      this.registerSuccess = false;
+      }
+    },
+    () => {
+      this.invalidRegister = true;
+      this.registerSuccess = false;
+    });
   }
 }
