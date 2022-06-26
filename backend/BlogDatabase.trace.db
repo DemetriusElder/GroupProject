@@ -570,3 +570,15 @@ Caused by: java.nio.channels.OverlappingFileLockException
 	at java.base/java.nio.channels.FileChannel.tryLock(FileChannel.java:1191)
 	at org.h2.mvstore.FileStore.open(FileStore.java:163)
 	... 28 more
+2022-06-26 13:20:36 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "TITLE VARCHAR(255)": "' Refreshing gin cocktails with simple ingredients in your fridgeRefreshing gin cocktails with simple ingredients in your fridge... (568)"; SQL statement:
+update entry set author=?, content=?, date=?, image_url=?, title=?, user_id=? where id=? [22001-200]
+2022-06-26 13:20:50 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "TITLE VARCHAR(255)": "'r fridgeRefreshing gin cocktails with simple ingredients in your fridgeRefreshing gin cocktails with simple ingredients in your... (386)"; SQL statement:
+update entry set author=?, content=?, date=?, image_url=?, title=?, user_id=? where id=? [22001-200]
+2022-06-26 13:21:01 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "TITLE VARCHAR(255)": "'r fefreshing gin cocktails with simple ingredients in your fridgeRefreshing gin cocktails with simple ingredients in your fridg... (317)"; SQL statement:
+update entry set author=?, content=?, date=?, image_url=?, title=?, user_id=? where id=? [22001-200]
+2022-06-26 13:21:03 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "TITLE VARCHAR(255)": "'r feRefreshing gin cocktails with simple ingredients in your fridgeRefreshing gin cocktails with simple ingredients in your fri... (256)"; SQL statement:
+update entry set author=?, content=?, date=?, image_url=?, title=?, user_id=? where id=? [22001-200]
