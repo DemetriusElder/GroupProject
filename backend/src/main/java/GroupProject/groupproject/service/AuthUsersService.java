@@ -48,4 +48,8 @@ public class AuthUsersService {
     public List<AuthUsers> getFilteredAuthUsers(String searchKey){
     	return authusersRepository.getFilteredAuthUsers(searchKey);
     }
+
+    public void deleteUsers(Long id) {
+    	authusersRepository.deleteUsersById(id);
+    }
 }
