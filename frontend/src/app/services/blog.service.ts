@@ -54,4 +54,18 @@ export class BlogService {
       },
     });
   }
+
+  updateBlog(blogDto: BlogDto, authToken: string, id: number) {
+    return this.http.put<void>(
+      `${this.BLOG_URL}/${id}`,
+      {
+        ...blogDto,
+      },
+      {
+        headers: {
+          authorization: authToken,
+        },
+      }
+    );
+  }
 }

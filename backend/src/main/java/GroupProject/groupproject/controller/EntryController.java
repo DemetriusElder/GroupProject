@@ -7,10 +7,12 @@ import java.util.*;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
+import GroupProject.groupproject.dto.DeletePostDto;
 import GroupProject.groupproject.dto.PostEntryDto;
 import GroupProject.groupproject.dto.UpdateEntryDto;
 import GroupProject.groupproject.entity.Entry;
 import GroupProject.groupproject.exception.EntryNotFoundException;
+import GroupProject.groupproject.exception.ForbiddenException;
 import GroupProject.groupproject.exception.UsernameNotFoundException;
 import GroupProject.groupproject.service.EntryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,14 +86,18 @@ public class EntryController {
 
 	@PutMapping("/{id}")
 	public ResponseEntity<Entry> updateEntry(@Valid @RequestBody UpdateEntryDto updateEntryDto,
-											 @PathVariable Long id) throws EntryNotFoundException {
+											 @PathVariable Long id) throws EntryNotFoundException, UsernameNotFoundException, ForbiddenException {
 		Entry updateEntry = entryService.updateEntry(updateEntryDto, id);
 		return new ResponseEntity<>(updateEntry, HttpStatus.OK);
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> deleteEntry(@PathVariable("id") Long id) throws EntryNotFoundException {
-		entryService.deleteEntry(id);
+	public ResponseEntity<Void> deleteEntry(@RequestBody DeletePostDto deletePostDto,
+											@PathVariable Long id)
+														throws EntryNotFoundException,
+														UsernameNotFoundException,
+														ForbiddenException {
+		entryService.deleteEntry(id, deletePostDto);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }

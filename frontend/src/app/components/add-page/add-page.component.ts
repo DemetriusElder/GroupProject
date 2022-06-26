@@ -64,7 +64,6 @@ export class AddPageComponent {
       this.authService.getUsername()!,
       this.authService.getPassword()!
     );
-    console.log(authToken);
     this.blogService.addBlog(blogDto, authToken).subscribe(
       null,
       () => (this.errorMessage = 'Something wrong'),

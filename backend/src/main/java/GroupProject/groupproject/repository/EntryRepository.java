@@ -8,17 +8,20 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface EntryRepository extends JpaRepository<Entry, Long> {
 
     Page<Entry> findAll(Pageable pageable);
 
+    Optional<Entry> findById(Long id);
+
     Entry getById(Long id);
 
     boolean existsById(Long id);
     
-    void deleteEntryById(Long id);
+    void deleteById(Long id);
     
     @Query("SELECT e FROM Entry e WHERE LOWER(CONCAT(e.title, e.author, e.content)) LIKE %?1%")
     Page<Entry> getFilteredEntries(String searchKey, Pageable pageable);

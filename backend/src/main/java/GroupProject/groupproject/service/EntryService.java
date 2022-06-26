@@ -1,10 +1,13 @@
 package GroupProject.groupproject.service;
 
+import GroupProject.groupproject.dto.DeletePostDto;
 import GroupProject.groupproject.dto.PostEntryDto;
 import GroupProject.groupproject.dto.UpdateEntryDto;
 import GroupProject.groupproject.entity.AuthUsers;
 import GroupProject.groupproject.entity.Entry;
+import GroupProject.groupproject.entity.Role;
 import GroupProject.groupproject.exception.EntryNotFoundException;
+import GroupProject.groupproject.exception.ForbiddenException;
 import GroupProject.groupproject.exception.UsernameNotFoundException;
 import GroupProject.groupproject.repository.AuthUsersRepository;
 import GroupProject.groupproject.repository.EntryRepository;
@@ -63,9 +66,11 @@ public class EntryService {
         Pageable pageable = PageRequest.of(page, size, Sort.by("date").descending());
     	return entryRepository.getFilteredEntries(searchKey, pageable);
     }
-    public Entry updateEntry(UpdateEntryDto updateEntryDto, Long id) throws EntryNotFoundException {
-        if (!entryRepository.existsById(id)) {
-            throw new EntryNotFoundException();
+    public Entry updateEntry(UpdateEntryDto updateEntryDto, Long id) throws EntryNotFoundException, UsernameNotFoundException, ForbiddenException {
+        AuthUsers user = authUsersRepository.findByUsername(updateEntryDto.getUsername()).orElseThrow(UsernameNotFoundException::new);
+        Entry entry = entryRepository.findById(id).orElseThrow(EntryNotFoundException::new);
+        if (!user.getUsername().equals(entry.getUser().getUsername())) {
+            throw new ForbiddenException();
         }
         Entry existingEntry = entryRepository.getById(id);
         existingEntry.setTitle(updateEntryDto.getTitle());
@@ -73,10 +78,12 @@ public class EntryService {
         existingEntry.setImageUrl(updateEntryDto.getImageUrl());
     	return entryRepository.save(existingEntry);
     }
-    public void deleteEntry(Long id) throws EntryNotFoundException {
-        if (!entryRepository.existsById(id)) {
-            throw new EntryNotFoundException();
+    public void deleteEntry(Long id, DeletePostDto deletePostDto) throws EntryNotFoundException, UsernameNotFoundException, ForbiddenException {
+        AuthUsers user = authUsersRepository.findByUsername(deletePostDto.getUsername()).orElseThrow(UsernameNotFoundException::new);
+        Entry entry = entryRepository.findById(id).orElseThrow(EntryNotFoundException::new);
+        if (!user.getUsername().equals(entry.getUser().getUsername()) && !user.getRole().equals(Role.ADMIN)) {
+            throw new ForbiddenException();
         }
-    	entryRepository.deleteEntryById(id);
+    	entryRepository.deleteById(id);
     }
 }

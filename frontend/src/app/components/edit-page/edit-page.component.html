@@ -1,13 +1,12 @@
 <section class="banner">
     <div class="banner-text">
         <h1>
-            Share your stories with others
+            We know sometimes you have typos in your post...
         </h1>
     </div>
 </section>
 <section class="form-container">
-    <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
-        <h2 class="auth-title">Tell us...</h2>
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
         <fieldset class="auth-field">
             <label for="title">Title</label>
             <input type="text" id="title" formControlName="title" />
@@ -30,6 +29,6 @@
             <small *ngIf="content?.touched && content?.errors?.['minlength']">Content
                 must be at least 200 characters</small>
         </fieldset>
-        <button type="submit" class="btn">Share</button>
+        <button type="submit" class="btn">Update</button>
     </form>
 </section>

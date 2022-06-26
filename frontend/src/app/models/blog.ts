@@ -11,7 +11,7 @@ export interface BlogDto {
   id?: string;
   imageUrl: string;
   title: string;
-  author: string;
+  author?: string;
   username: string;
   content: string;
 }

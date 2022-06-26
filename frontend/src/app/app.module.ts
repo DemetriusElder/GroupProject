@@ -20,6 +20,7 @@ import { SearchPageComponent } from './components/search-page/search-page.compon
 import { ArticlePageComponent } from './components/article-page/article-page.component';
 import { MyPageComponent } from './components/my-page/my-page.component';
 import { AddPageComponent } from './components/add-page/add-page.component';
+import { EditPageComponent } from './components/edit-page/edit-page.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { AddPageComponent } from './components/add-page/add-page.component';
     ArticlePageComponent,
     MyPageComponent,
     AddPageComponent,
+    EditPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,7 @@ import { AddPageComponent } from './components/add-page/add-page.component';
             { path: 'add', component: AddPageComponent },
             { path: 'me', component: MyPageComponent },
             { path: 'blogs/:id', component: ArticlePageComponent },
-            { path: 'edit/:id', component: AddPageComponent },
+            { path: 'edit/:id', component: EditPageComponent },
           ],
         },
       ],
