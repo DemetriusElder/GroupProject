@@ -12,8 +12,6 @@ import { DateAgoPipe } from './pipes/date-ago.pipe';
 import { FormsModule } from '@angular/forms';
 import { BasicAuthInterceptorService } from './basic-auth-interceptor.service';
 import { LogoutComponent } from './logout/logout.component';
-import { RegisterFormComponent } from './register/register-form.component';
-import { UpdateBlogComponent } from './update-blog/update-blog.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LogoComponent } from './components/logo/logo.component';
@@ -34,8 +32,6 @@ import { AddPageComponent } from './components/add-page/add-page.component';
     DateAgoPipe,
     LoginComponent,
     LogoutComponent,
-    RegisterFormComponent,
-    UpdateBlogComponent,
     SignupComponent,
     LogoComponent,
     FooterComponent,
@@ -63,7 +59,6 @@ import { AddPageComponent } from './components/add-page/add-page.component';
             { path: 'blogs/:id', component: ArticlePageComponent },
           ],
         },
-        { path: 'update', component: UpdateBlogComponent },
       ],
       { onSameUrlNavigation: 'reload' }
     ),
