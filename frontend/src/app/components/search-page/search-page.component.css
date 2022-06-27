@@ -30,7 +30,7 @@
   border-radius: 8px;
   height: 52px;
   padding: 0 16px;
-  width: 350px;
+  width: 300px;
   display: flex;
   align-items: center;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -62,16 +62,13 @@ input::-ms-input-placeholder {
   color: #a9a9ac;
 }
 
-.blogs {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 50px 0;
-  max-width: 1200px;
-  margin: auto;
-}
-
 .search-message {
   margin-top: 50px;
+}
+
+.blogs {
+  display: grid;
+  width: 100%;
+  gap: 3rem;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
 }

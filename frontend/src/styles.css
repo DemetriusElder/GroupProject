@@ -181,3 +181,13 @@ a {
   background-color: #f082ac;
   cursor: not-allowed;
 }
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  max-width: 1300px;
+  margin: auto;
+}

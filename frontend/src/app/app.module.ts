@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { BlogListComponent } from './components/blog-list/blog-list.component';
 import { BlogPreviewComponent } from './components/blog-preview/blog-preview.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DateAgoPipe } from './pipes/date-ago.pipe';
@@ -26,7 +25,6 @@ import { EditPageComponent } from './components/edit-page/edit-page.component';
   declarations: [
     AppComponent,
     NavbarComponent,
-    BlogListComponent,
     BlogPreviewComponent,
     DateAgoPipe,
     LoginComponent,

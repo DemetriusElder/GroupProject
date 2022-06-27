@@ -12,7 +12,11 @@
         <a *ngIf="!isAuthenticated" [routerLink]="['/signup']" class="btn">Sign Up</a>
     </div>
 </section>
-<section class="blogs">
-    <app-blog-list [blogs]="blogs"></app-blog-list>
+<main class="content">
+    <div class="blogs">
+        <div *ngFor="let blog of blogs">
+            <app-blog-preview [blog]="blog"></app-blog-preview>
+        </div>
+    </div>
     <button class="btn" (click)="onFetchMore()" *ngIf="!last && blogs.length !== 0">See More</button>
-</section>
+</main>
