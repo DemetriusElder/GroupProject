@@ -1,0 +1,22 @@
+<section class="banner">
+    <div class="banner-text">
+        <h1>
+            Explore the world’s leading blogging platform
+        </h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam scelerisque mattis est quis interdum. In ex
+            lacus,
+            auctor iaculis pulvinar nec, consequat non ipsum. Suspendisse in felis laoreet, rutrum diam in, vehicula
+            diam.
+        </p>
+        <a *ngIf="!isAuthenticated" [routerLink]="['/signup']" class="btn">Sign Up</a>
+    </div>
+</section>
+<main class="content">
+    <div class="blogs">
+        <div *ngFor="let blog of blogs">
+            <app-blog-preview [blog]="blog"></app-blog-preview>
+        </div>
+    </div>
+    <button class="btn" (click)="onFetchMore()" *ngIf="!last && blogs.length !== 0">See More</button>
+</main>

@@ -1,0 +1,38 @@
+<section class="banner">
+    <div class="banner-text">
+        <h1>
+            Share your stories with others
+        </h1>
+    </div>
+</section>
+<section class="form-container">
+    <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+        <h2 class="auth-title">Tell us...</h2>
+        <fieldset class="auth-field">
+            <label for="title">Title</label>
+            <input type="text" id="title" formControlName="title" />
+            <small *ngIf="title?.touched && title?.errors?.['required']">Title
+                is required</small>
+            <small *ngIf="title?.touched && title?.errors?.['minlength']">Title
+                must be at least 15 characters</small>
+        </fieldset>
+        <fieldset class="auth-field">
+            <label for="imageUrl">Image Url</label>
+            <input type="text" id="imageUrl" formControlName="imageUrl" />
+            <small *ngIf="imageUrl?.touched && imageUrl?.errors?.['required']">Image url
+                is required</small>
+        </fieldset>
+        <fieldset class="auth-field">
+            <label for="content">Content</label>
+            <textarea cols="30" rows="10" formControlName="content"></textarea>
+            <small *ngIf="content?.touched && content?.errors?.['required']">Content
+                is required</small>
+            <small *ngIf="content?.touched && content?.errors?.['minlength']">Content
+                must be at least 200 characters</small>
+        </fieldset>
+        <button type="submit" class="btn" *ngIf="!isLoading">Share</button>
+        <button type="submit" class="btn loading" *ngIf="isLoading" disabled="true">
+            Sharing...
+        </button>
+    </form>
+</section>

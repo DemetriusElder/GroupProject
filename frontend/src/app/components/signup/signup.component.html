@@ -1,0 +1,50 @@
+<div *ngIf="errorMessage" class="red-alert">{{errorMessage}}</div>
+<section class="auth">
+    <!-- alert
+    logo -->
+    <div class="auth-left">
+        <div class="auth-logo">
+            <app-logo></app-logo>
+        </div>
+    </div>
+    <div class="auth-right">
+
+        <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="auth-form">
+            <h2 class="auth-title">Sign up to Blog</h2>
+            <div class="divided-fields">
+                <fieldset class="auth-field">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" formControlName="firstName" />
+                    <small *ngIf="firstName?.touched && firstName?.errors?.['required']">First name is required</small>
+                </fieldset>
+                <fieldset class="auth-field">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" formControlName="lastName" />
+                    <small *ngIf="lastName?.touched && lastName?.errors?.['required']">Last
+                        name is required</small>
+                </fieldset>
+            </div>
+            <fieldset class="auth-field">
+                <label for="username">Username</label>
+                <input type="text" id="username" formControlName="username" />
+                <small *ngIf="username?.touched && username?.errors?.['required']">Username
+                    is required</small>
+                <small *ngIf="username?.touched && username?.errors?.['minlength']">Username
+                    must be at least 6 characters</small>
+            </fieldset>
+            <fieldset class="auth-field">
+                <label for="password">Password</label>
+                <input type="password" id="password" formControlName="password" />
+                <small *ngIf="password?.touched && password?.errors?.['required']">Password
+                    is required</small>
+                <small *ngIf="password?.touched && password?.errors?.['minlength']">Password
+                    must be at least 6 characters</small>
+            </fieldset>
+            <button type="submit" class="btn" *ngIf="!isLoading">Sign Up</button>
+            <button type="submit" class="btn loading" *ngIf="isLoading" disabled="true">
+                Signing up...
+            </button>
+            <small class="auth-small">Already a member? <a routerLink="/login">Sign in now</a></small>
+        </form>
+    </div>
+</section>

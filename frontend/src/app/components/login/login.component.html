@@ -1,0 +1,29 @@
+<div *ngIf="errorMessage" class="red-alert">{{errorMessage}}</div>
+<section class="auth">
+    <!-- alert
+    logo -->
+    <div class="auth-left bg">
+        <div class="auth-logo">
+            <app-logo></app-logo>
+        </div>
+    </div>
+    <div class="auth-right">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="auth-form">
+            <h2 class="auth-title">Sign in to Blog</h2>
+            <fieldset class="auth-field">
+                <label for="username">Username</label>
+                <input type="text" id="username" formControlName="username" />
+                <small></small>
+            </fieldset>
+            <fieldset class="auth-field">
+                <label for="password">Password</label>
+                <input type="password" id="password" formControlName="password" />
+            </fieldset>
+            <button type="submit" class="btn" *ngIf="!isLoading">Sign In</button>
+            <button type="submit" class="btn loading" *ngIf="isLoading" disabled="true">
+                Signing in...
+            </button>
+            <small class="auth-small">Not a member? <a routerLink="/signup">Sign up now</a></small>
+        </form>
+    </div>
+</section>

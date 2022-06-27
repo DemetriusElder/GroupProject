@@ -1,0 +1,10 @@
+.auth-left p {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+@media screen and (min-width: 992px) {
+  .auth-left {
+    background-image: url("https://img.freepik.com/free-vector/colorful-memphis-style-poster-vector_53876-143598.jpg?t=st=1656121022~exp=1656121622~hmac=41bfcd74250efa04d63d172fb6bae1ee3c8424635d11bc2ec329d28f04131bb7&w=740");
+  }
+}

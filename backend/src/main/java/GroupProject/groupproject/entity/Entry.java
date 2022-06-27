@@ -1,5 +1,6 @@
 package GroupProject.groupproject.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -17,10 +18,15 @@ public class Entry {
 	private String imageUrl;
 
 	private String title;
-
-	private String author;
 	
 	private LocalDateTime date;
+
+	private String author;
+
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name="user_id", nullable = false)
+	private AuthUsers user;
 
 	@Lob
 	private String content;
@@ -28,11 +34,20 @@ public class Entry {
 	public Entry() {
 	}
 
-	public Entry(String imageUrl, String title, String author, LocalDateTime date, String content) {
+	public Entry(String imageUrl, String title, LocalDateTime date, AuthUsers user, String content) {
 		this.imageUrl = imageUrl;
 		this.title = title;
-		this.author = author;
 		this.date = date;
+		this.user = user;
+		this.content = content;
+	}
+
+	public Entry(String imageUrl, String title, LocalDateTime date, String author, AuthUsers user, String content) {
+		this.imageUrl = imageUrl;
+		this.title = title;
+		this.date = date;
+		this.author = author;
+		this.user = user;
 		this.content = content;
 	}
 
@@ -60,20 +75,28 @@ public class Entry {
 		this.title = title;
 	}
 
-	public String getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(String author) {
-		this.author = author;
-	}
-
 	public LocalDateTime getDate() {
 		return date;
 	}
 
 	public void setDate(LocalDateTime date) {
 		this.date = date;
+	}
+
+	public AuthUsers getUser() {
+		return user;
+	}
+
+	public void setUser(AuthUsers user) {
+		this.user = user;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 
 	public String getContent() {

@@ -54,7 +54,7 @@ public class BlogWriterApplication /*implements CommandLineRunner*/ {
 			
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedOrigins("*");
+				registry.addMapping("/**").allowedOrigins("*").allowedMethods("HEAD", "GET", "PUT", "POST", "DELETE", "PATCH");;
 			}
 		};
 	}
