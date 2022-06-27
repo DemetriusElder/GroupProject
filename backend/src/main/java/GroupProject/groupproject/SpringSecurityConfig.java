@@ -33,7 +33,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
      .authorizeRequests()
      .antMatchers(HttpMethod.GET).permitAll()
      .antMatchers(HttpMethod.POST, "/authusers").permitAll()
-     .antMatchers("http://localhost:8080/api/v1/basicauth").permitAll()
+     .antMatchers("httcp://localhost:8080/api/v1/basicauth").permitAll()
      .antMatchers(HttpMethod.OPTIONS, "/**")
      .permitAll()
      .anyRequest()

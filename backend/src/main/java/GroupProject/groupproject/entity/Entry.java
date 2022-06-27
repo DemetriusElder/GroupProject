@@ -1,7 +1,6 @@
 package GroupProject.groupproject.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
 

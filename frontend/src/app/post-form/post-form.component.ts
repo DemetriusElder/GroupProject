@@ -56,7 +56,7 @@ export class PostFormComponent implements OnInit {
     }
     const blog = {
       title: this.f['title'].value,
-      author: this.testUser.getUsername,
+      author: this.testUser.getUsername(),
       imageUrl: this.f['image'].value,
       content: this.f['content'].value,
     };

@@ -10,6 +10,7 @@ import GroupProject.groupproject.service.EntryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 @RestController()
@@ -66,6 +67,7 @@ public class EntryController {
 		Entry updateEntry = entryService.updateEntry(entry);
 		return new ResponseEntity<>(updateEntry, HttpStatus.OK);
 	}
+	@CrossOrigin(origins = "http://localhost:4200")
 	@Transactional
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<?> deleteEntry(@PathVariable("id") Long id){
