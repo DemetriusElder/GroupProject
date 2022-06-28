@@ -9,20 +9,12 @@
   justify-content: center;
 }
 
-.banner-text {
+.banner-content {
   color: white;
-  text-align: center;
-  font-size: 1.5rem;
 }
 
-.banner-text h1 {
-  font-size: 2rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-}
-
-.form-container {
-  padding: 50px;
+.padding {
+  padding: 30px;
 }
 
 form {
