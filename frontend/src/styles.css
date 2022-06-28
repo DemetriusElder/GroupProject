@@ -191,3 +191,27 @@ a {
   max-width: 1300px;
   margin: auto;
 }
+
+.padding {
+  padding: 0px 30px;
+}
+
+.banner-content {
+  max-width: 600px;
+  line-height: 1.5;
+}
+
+.banner-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.banner-subtitle {
+  margin-bottom: 2rem;
+}
+
+@media screen and (min-width: 762px) {
+  .banner-title {
+    font-size: 2rem;
+  }
+}
