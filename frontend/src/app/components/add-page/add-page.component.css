@@ -1,30 +1,20 @@
 .banner {
   background-image: url("https://img.freepik.com/free-vector/paper-style-dynamic-lines-background_79603-1847.jpg?t=st=1656193280~exp=1656193880~hmac=157f9180a594639320bc025b8ad67c17e9fb9874bace193a8f48b8c078d6f336&w=1380");
-  height: 400px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  position: relative;
 }
 
-.banner-text {
+.banner-content {
   color: white;
-  text-align: center;
-  font-size: 1.5rem;
 }
 
-.banner-text h1 {
-  font-size: 3rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-}
-
-.form-container {
-  padding: 50px;
+section.padding {
+  padding: 30px;
 }
 
 form {

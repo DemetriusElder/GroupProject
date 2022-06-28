@@ -1,35 +1,36 @@
-.banner {
+.search-banner {
   background-image: url("https://img.freepik.com/free-vector/natural-background-with-mountains-landscape_23-2148257711.jpg?t=st=1656174317~exp=1656174917~hmac=166211996dd6b439725efae5eded953488d1aadd9c2c89236282ddfa39469403&w=1380");
-  height: 400px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
   position: relative;
 }
 
-.banner-text {
+.banner-content {
   color: white;
   text-align: center;
-  font-size: 1.5rem;
 }
 
-.banner-text h1 {
-  font-size: 3rem;
+.banner-title {
   font-weight: 800;
-  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.banner-subtitle {
+  font-size: 1.25rem;
 }
 
 .search-bar {
   position: absolute;
-  bottom: -26px;
+  bottom: -1.5rem;
   background-color: white;
-  border-radius: 8px;
-  height: 52px;
-  padding: 0 16px;
+  border-radius: 0.5rem;
+  height: 3rem;
+  padding: 0 1rem;
   width: 300px;
   display: flex;
   align-items: center;
@@ -41,9 +42,7 @@
 }
 
 input {
-  font-size: 16px;
-  line-height: 28px;
-  margin-left: 12px;
+  margin-left: 1rem;
   border: none;
   outline: none;
   width: 100%;
@@ -67,8 +66,19 @@ input::-ms-input-placeholder {
 }
 
 .blogs {
-  display: grid;
   width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 260px);
+  justify-content: center;
   gap: 3rem;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+
+@media screen and (min-width: 762px) {
+  .banner-title {
+    font-size: 2.5rem;
+  }
+
+  .banner-subtitle {
+    font-size: 1.5rem;
+  }
 }

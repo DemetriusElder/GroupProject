@@ -1,15 +1,15 @@
 <div *ngIf="errorMessage" class="red-alert">{{errorMessage}}</div>
 <section class="auth">
-    <!-- alert
-    logo -->
     <div class="auth-left">
         <div class="auth-logo">
             <app-logo></app-logo>
         </div>
     </div>
     <div class="auth-right">
-
         <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="auth-form">
+            <div class="mobile-logo">
+                <app-logo></app-logo>
+            </div>
             <h2 class="auth-title">Sign up to Blog</h2>
             <div class="divided-fields">
                 <fieldset class="auth-field">
