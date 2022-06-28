@@ -3,10 +3,13 @@ footer {
   background: #eeeeee;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 0.5rem;
   margin-top: 1px;
+}
+
+div {
+  text-align: center;
 }
 
 a {
