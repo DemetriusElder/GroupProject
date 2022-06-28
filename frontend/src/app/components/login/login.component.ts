@@ -29,8 +29,8 @@ export class LoginComponent {
   login() {
     this.authService
       .authenticate(
-        this.loginForm.get('username')!.value,
-        this.loginForm.get('password')!.value
+        this.loginForm.get('username')!.value!,
+        this.loginForm.get('password')!.value!
       )
       .subscribe(
         (user: User) => {

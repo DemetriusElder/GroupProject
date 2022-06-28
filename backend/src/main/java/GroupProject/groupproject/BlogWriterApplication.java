@@ -17,6 +17,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -29,6 +31,7 @@ import com.azure.cosmos.models.CosmosContainerProperties;
 import com.azure.cosmos.models.CosmosContainerResponse;
 import com.azure.cosmos.models.CosmosDatabaseResponse;
 import com.azure.cosmos.models.CosmosItemResponse;
+import com.azure.spring.data.cosmos.repository.config.EnableCosmosRepositories;
 
 import GroupProject.groupproject.entity.ContentKeyword;
 import GroupProject.groupproject.entity.Entry;
@@ -37,12 +40,13 @@ import GroupProject.groupproject.repository.EntryRepository;
 
 @SpringBootApplication
 @CrossOrigin(origins="*")
+@ComponentScan({"GroupProject.groupproject.repository","GroupProject.groupproject.service", "GroupProject.groupproject"})
 public class BlogWriterApplication /*implements CommandLineRunner*/ {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(BlogWriterApplication.class);
 	
-	@Autowired
-	private ContentKeywordRepository keywordRepo;
+//	@Autowired
+//	private ContentKeywordRepository keywordRepo;
 
 //	@Autowired
 //    private EntryRepository repository;

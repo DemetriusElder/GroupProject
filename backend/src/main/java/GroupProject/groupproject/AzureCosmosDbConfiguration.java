@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.azure.core.credential.AzureKeyCredential;
 import com.azure.cosmos.CosmosClientBuilder;
@@ -17,10 +19,12 @@ import com.azure.spring.data.cosmos.core.ResponseDiagnostics;
 import com.azure.spring.data.cosmos.core.ResponseDiagnosticsProcessor;
 import com.azure.spring.data.cosmos.repository.config.EnableCosmosRepositories;
 
+import GroupProject.groupproject.repository.ContentKeywordRepository;
 import io.micrometer.core.lang.Nullable;
 
 @Configuration
-@EnableCosmosRepositories
+@EnableCosmosRepositories//(basePackageClasses = ContentKeywordRepository.class)
+//@EnableJpaRepositories("foo.somepackage.repositories")
 public class AzureCosmosDbConfiguration extends AbstractCosmosConfiguration {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(AppConfiguration.class);
@@ -76,7 +80,6 @@ public class AzureCosmosDbConfiguration extends AbstractCosmosConfiguration {
 	        public void processResponseDiagnostics(@Nullable ResponseDiagnostics responseDiagnostics) {
 	            LOGGER.info("Response Diagnostics {}", responseDiagnostics);
 	        }
-	    }
-	 
+	  }
 
 }
