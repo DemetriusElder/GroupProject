@@ -1,17 +1,17 @@
-<nav>
+<nav class="widescreen-nav padding">
     <app-logo></app-logo>
-    <ul>
+    <ul class="widescreen-list">
         <li>
             <a routerLink="/search" class="link">Search</a>
         </li>
         <li>
             <a routerLink="/login" *ngIf="!isAuthenticated" class="link">Sign In</a>
-            <div *ngIf="isAuthenticated" class="logout" (click)="toggleButton()">
-                <span [ngClass]="{'link': true,'primary-color': isShowingLogout}">Hi,
-                    <strong>{{user!.fullName}}</strong>
+            <div *ngIf="isAuthenticated" class="dropdown">
+                <span class="dropdown-btn">
+                    Hi, <strong>{{user!.fullName}}</strong>
                     <fa-icon [icon]="faAngleDown" class="icon"></fa-icon>
                 </span>
-                <div (click)="logout()" class="logout-btn" *ngIf="isShowingLogout">Log out</div>
+                <div (click)="logout()" class="dropdown-content">Log out</div>
             </div>
         </li>
         <li>
@@ -19,5 +19,27 @@
             <a routerLink="/login" *ngIf="!isAuthenticated" class="btn">Share your stories</a>
         </li>
     </ul>
-
+</nav>
+<nav class="mobile-nav padding">
+    <div class="mobile-icon">
+        <fa-icon [icon]="faBars" (click)="openMobileNav()" *ngIf="!isShowingMobileNav"></fa-icon>
+        <fa-icon [icon]="faXmark" (click)="closeMobileNav()" *ngIf="isShowingMobileNav"></fa-icon>
+    </div>
+    <app-logo></app-logo>
+    <a routerLink="/login" *ngIf="!isAuthenticated" class="link">Sign In</a>
+    <a *ngIf="isAuthenticated" class="link" (click)="logout()">Log Out</a>
+    <div class="mobile-menu" *ngIf="isShowingMobileNav">
+        <ul class="mobile-list">
+            <li *ngIf="isAuthenticated">
+                Hi, <strong>{{user!.fullName}}</strong>
+            </li>
+            <li>
+                <a routerLink="/search" class="link" (click)="closeMobileNav()">Search</a>
+            </li>
+            <li>
+                <a routerLink="/add" *ngIf="isAuthenticated" (click)="closeMobileNav()">Share your stories</a>
+                <a routerLink="/login" *ngIf="!isAuthenticated" (click)="closeMobileNav()">Share your stories</a>
+            </li>
+        </ul>
+    </div>
 </nav>

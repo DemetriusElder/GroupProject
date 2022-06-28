@@ -1,7 +1,5 @@
 <div *ngIf="errorMessage" class="red-alert">{{errorMessage}}</div>
 <section class="auth">
-    <!-- alert
-    logo -->
     <div class="auth-left bg">
         <div class="auth-logo">
             <app-logo></app-logo>
@@ -9,6 +7,9 @@
     </div>
     <div class="auth-right">
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="auth-form">
+            <div class="mobile-logo">
+                <app-logo></app-logo>
+            </div>
             <h2 class="auth-title">Sign in to Blog</h2>
             <fieldset class="auth-field">
                 <label for="username">Username</label>
