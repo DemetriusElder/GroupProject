@@ -14,10 +14,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -37,10 +39,13 @@ import GroupProject.groupproject.entity.ContentKeyword;
 import GroupProject.groupproject.entity.Entry;
 import GroupProject.groupproject.repository.ContentKeywordRepository;
 import GroupProject.groupproject.repository.EntryRepository;
+import reactor.core.publisher.Mono;
 
 @SpringBootApplication
 @CrossOrigin(origins="*")
-@ComponentScan({"GroupProject.groupproject.repository","GroupProject.groupproject.service", "GroupProject.groupproject"})
+//@Configuration
+//@EnableAutoConfiguration
+//@ComponentScan("GroupProject.groupproject")
 public class BlogWriterApplication /*implements CommandLineRunner*/ {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(BlogWriterApplication.class);
@@ -73,6 +78,18 @@ public class BlogWriterApplication /*implements CommandLineRunner*/ {
 	 * 
 	 * YOU ONLY NEED TO RUN THIS ONCE TO GET EXISTING DATA!!
 	 * YOU CAN COMMENT IT OUT AFTER THAT FIRST RUN! :D
+	 * It takes a long time :c
+	 * 
+	 * Steps:
+	 * 1. Go above at our BlogWriterApp class and uncomment CommandLineRunner
+	 * 2. Uncomment the ContentKeywordRepo right underneath
+	 * 3. Uncomment this run function
+	 * 4. You may or may not have to change the credentials (endpoint/key)
+	 * 	      & other things (database name/container name) to match your cosmos
+	 * 		  (idk if you can access mine)
+	 *        If you do have to change them, remember to do it in the application.properties too!
+	 * 5. Run it and wait like 10 mins DX
+	 * 6. Remember to comment everything that you uncommented out
 	 * 
 	 * */
 	/*public void run(String... var1) throws SQLException {
@@ -136,8 +153,7 @@ public class BlogWriterApplication /*implements CommandLineRunner*/ {
 					else {
 						Optional<ContentKeyword> opt = keywordRepo.findById(a);
 						if(opt.isPresent()) {
-							ContentKeyword word = opt.get();
-							System.out.println("repo word: "+ word.getWord());
+						ContentKeyword word = opt.get();
 							if(!word.getListOfIds().contains(contentIndex)) {
 								word.addId(contentIndex);
 								keywordRepo.save(word);

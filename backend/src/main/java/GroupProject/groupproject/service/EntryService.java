@@ -29,13 +29,13 @@ public class EntryService {
 
     private final EntryRepository entryRepository;
     private final AuthUsersRepository authUsersRepository;
-    //private final ContentKeywordRepository contentKeywordRepository;
+    private final ContentKeywordService contentKeywordService;
 
     @Autowired
-    public EntryService(EntryRepository entryRepository, AuthUsersRepository authUsersRepository) {
+    public EntryService(EntryRepository entryRepository, AuthUsersRepository authUsersRepository, ContentKeywordService contentKeywordService) {
         this.entryRepository = entryRepository;
         this.authUsersRepository = authUsersRepository;
-        //this.contentKeywordRepository = contentKeywordRepository;
+        this.contentKeywordService = contentKeywordService;
     }
 
     public Page<Entry> getAll(int page, int size) {
@@ -93,7 +93,9 @@ public class EntryService {
     
     public Page<Entry> getFilteredEntries(String searchKey, int page, int size){
         Pageable pageable = PageRequest.of(page, size, Sort.by("date").descending());
-    	return entryRepository.getFilteredEntries(searchKey, pageable);
+//    	return entryRepository.getFilteredEntries(searchKey, pageable);
+    	Page<Entry> entriesSearched = contentKeywordService.getFilteredContentKeywords(searchKey, pageable);
+    	return entriesSearched;
     }
     
     public Entry updateEntry(UpdateEntryDto updateEntryDto, Long id) throws EntryNotFoundException, UsernameNotFoundException, ForbiddenException {

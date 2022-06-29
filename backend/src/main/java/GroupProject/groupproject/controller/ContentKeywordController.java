@@ -11,7 +11,7 @@ import GroupProject.groupproject.entity.ContentKeyword;
 import GroupProject.groupproject.service.ContentKeywordService;
 import GroupProject.groupproject.service.EntryService;
 
-@RestController("keyword")
+@RestController("search")
 public class ContentKeywordController {
 	
 	private final ContentKeywordService contentKeywordService;
@@ -21,13 +21,14 @@ public class ContentKeywordController {
 		this.contentKeywordService = contentKeywordService;
 	}
 
-	@GetMapping("/{searchKey}")
-	public String printKeyword (@PathVariable("searchKey") String a) {
-		Optional<ContentKeyword> opt = contentKeywordService.getById(a);
-		if(opt.isPresent()) {
-			ContentKeyword keyword = opt.get();
-			return keyword.getWord();
-		}
-		return null;
-	}
+
+//	@GetMapping("/{searchKey}")
+//	public String printKeyword (@PathVariable("searchKey") String a) {
+//		Optional<ContentKeyword> opt = contentKeywordService.getById(a);
+//		if(opt.isPresent()) {
+//			ContentKeyword keyword = opt.get();
+//			return keyword.getWord();
+//		}
+//		return null;
+//	}
 }
