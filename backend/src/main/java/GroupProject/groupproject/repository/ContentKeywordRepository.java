@@ -20,9 +20,6 @@ import reactor.core.publisher.Mono;
 public interface ContentKeywordRepository extends CosmosRepository<ContentKeyword, String>{
 
 	List<ContentKeyword> findByWord(String a);
-//	Mono<ContentKeyword> getByWord(String a);
-//	
-    //Page<Entry> getFilteredContentKeywords(String a, Pageable page);
 	
 //	void addWordAndIdToCosmos(String words, long blogId);
 //	List<Long> getIdsFromKeyword(String a);

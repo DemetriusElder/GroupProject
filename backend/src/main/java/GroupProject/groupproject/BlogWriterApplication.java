@@ -6,8 +6,12 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +33,7 @@ import com.azure.cosmos.CosmosClient;
 import com.azure.cosmos.CosmosClientBuilder;
 import com.azure.cosmos.CosmosContainer;
 import com.azure.cosmos.CosmosDatabase;
+import com.azure.cosmos.implementation.apachecommons.lang.ArrayUtils;
 import com.azure.cosmos.models.CosmosContainerProperties;
 import com.azure.cosmos.models.CosmosContainerResponse;
 import com.azure.cosmos.models.CosmosDatabaseResponse;
@@ -46,12 +51,12 @@ import reactor.core.publisher.Mono;
 //@Configuration
 //@EnableAutoConfiguration
 //@ComponentScan("GroupProject.groupproject")
-public class BlogWriterApplication /*implements CommandLineRunner*/ {
+public class BlogWriterApplication implements CommandLineRunner {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(BlogWriterApplication.class);
 	
-//	@Autowired
-//	private ContentKeywordRepository keywordRepo;
+	@Autowired
+	private ContentKeywordRepository keywordRepo;
 
 //	@Autowired
 //    private EntryRepository repository;
@@ -84,15 +89,15 @@ public class BlogWriterApplication /*implements CommandLineRunner*/ {
 	 * 1. Go above at our BlogWriterApp class and uncomment CommandLineRunner
 	 * 2. Uncomment the ContentKeywordRepo right underneath
 	 * 3. Uncomment this run function
-	 * 4. You may or may not have to change the credentials (endpoint/key)
-	 * 	      & other things (database name/container name) to match your cosmos
+	 * 4. You may or may not have to change the credentials (.endpoint/.key)
+	 * 	      & other things (databaseName/containerName) to match your cosmos
 	 * 		  (idk if you can access mine)
 	 *        If you do have to change them, remember to do it in the application.properties too!
-	 * 5. Run it and wait like 10 mins DX
-	 * 6. Remember to comment everything that you uncommented out
+	 * 5. Run it and wait like 5-10 mins DX
+	 * 6. Remember to comment everything that you uncommented out when you're done!
 	 * 
 	 * */
-	/*public void run(String... var1) throws SQLException {
+	public void run(String... var1) throws SQLException {
 		
 		CosmosClient client;
 		keywordRepo.deleteAll();
@@ -128,30 +133,37 @@ public class BlogWriterApplication /*implements CommandLineRunner*/ {
 			// set of all the entries
 			ResultSet rs = st.executeQuery(query);
 
-			while(rs.next())  {
-				
-				// there's an entry where the content is null, i was too lazy to go delete, so i put an if
-				if (rs.getString("content")!=null) {
+			while(rs.next())  {	
 				
 					//taking out all the punctuation (except ') + newlines, making it lowercase
-				String parse = rs.getString("content").replaceAll("[\\p{P}&&[^\\u0027]&&[\n]]", "").toLowerCase();
-				
+				String parseContent = rs.getString("content").replaceAll("[\\p{P}&&[^\\u0027]&&[\n]]", "").toLowerCase();
+				String parseTitle = rs.getString("title").replaceAll("[\\p{P}&&[^\\u0027]&&[\n]]", "").toLowerCase();
+				String parseAuthor = rs.getString("author").replaceAll("[\\p{P}&&[^\\u0027]&&[\n]]", "").toLowerCase();
 				// getting entry id to store into the keywords later
 				Long contentIndex = rs.getLong("id");
 				
-				String[] arr = parse.split(" ");
+				String[] arrContent = parseContent.split(" ");
+				String[] arrTitle = parseTitle.split(" ");
+				String[] arrAuthor = parseAuthor.split(" ");
+				ArrayList<String> arr = new ArrayList<String>();
+				arr.addAll(Arrays.asList(arrContent));
+				arr.addAll(Arrays.asList(arrTitle));
+				arr.addAll(Arrays.asList(arrAuthor));
+				
+				//removing duplicates
+				Set<String> set = new HashSet<String>(arr);
 				
 				// looping through ALL the words
-				for(String a : arr) {
+				for(String s : set) {
 					
 					// if the word is not in the repo, create a new keyword
-					if (keywordRepo.findByWord(a).isEmpty()) {
-						ContentKeyword keyword = new ContentKeyword(a, contentIndex);
+					if (keywordRepo.findByWord(s).isEmpty()) {
+						ContentKeyword keyword = new ContentKeyword(s, contentIndex);
 						keywordRepo.save(keyword);
 					}
 					// else add the entry id into the existing keyword
 					else {
-						Optional<ContentKeyword> opt = keywordRepo.findById(a);
+						Optional<ContentKeyword> opt = keywordRepo.findById(s);
 						if(opt.isPresent()) {
 						ContentKeyword word = opt.get();
 							if(!word.getListOfIds().contains(contentIndex)) {
@@ -163,11 +175,11 @@ public class BlogWriterApplication /*implements CommandLineRunner*/ {
 				}
 				
 				}
-			}
+			
 		}
 	
 		finally {}
 	
-   }*/
+   }
 
 }

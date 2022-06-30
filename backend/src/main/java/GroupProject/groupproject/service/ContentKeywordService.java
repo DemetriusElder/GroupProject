@@ -10,6 +10,7 @@ import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.support.PagedListHolder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -57,8 +58,8 @@ public class ContentKeywordService {
 //		return opt;
 //	}
 //	
-	public Page<Entry> getFilteredContentKeywords(String searchKey, Pageable page) {
-		Pageable pageable = page;
+	public Page<Entry> getFilteredContentKeywords(String searchKey, int page, int size) {
+		Pageable pageable = PageRequest.of(page, size, Sort.by("date").descending());
 		String[] searchWords = searchKey.split(" ");
 		List <Long> listOfIds = new ArrayList<Long>();
 
@@ -68,7 +69,7 @@ public class ContentKeywordService {
 
 			if(opt.isPresent()) {
 				ContentKeyword keyword = opt.get();
-				System.out.println("******** "+keyword.getWord()+" ***********");
+//				System.out.println("******** "+keyword.getWord()+" ***********");
 				List<Long> listOfIds2 = keyword.getListOfIds();
 				if(i==0) {
 					listOfIds = listOfIds2;
@@ -77,15 +78,23 @@ public class ContentKeywordService {
 					listOfIds.retainAll(listOfIds2);
 				}
 			}
+			else {
+				listOfIds.removeAll(listOfIds);
+			}
 			
 		}
-		System.out.println("********* "+listOfIds+" *********");
+//		System.out.println("********* "+listOfIds+" *********");
+		System.out.println("********* "+searchKey+" *********");
 		List<Entry> listOfEntries = new ArrayList<Entry>();
 		Iterator<Long> iterator = listOfIds.iterator();
 		for(Long l : listOfIds) {
 			listOfEntries.add(entryRepository.getById(l));
 		}
-		Page<Entry> searchPage = new PageImpl<>(listOfEntries, pageable, listOfEntries.size());
+		Page<Entry> searchPage = new PageImpl<>(listOfEntries, pageable, size);
+//		PagedListHolder searchPage = new PagedListHolder(listOfEntries);
+//		searchPage.setPageSize(size);
+//		searchPage.setPage(page);
+		
 		return searchPage;
 		
 	}

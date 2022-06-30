@@ -14,7 +14,9 @@ import GroupProject.groupproject.repository.AuthUsersRepository;
 import GroupProject.groupproject.repository.ContentKeywordRepository;
 import GroupProject.groupproject.repository.EntryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.support.PagedListHolder;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -22,7 +24,11 @@ import org.springframework.stereotype.Service;
 
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class EntryService {
@@ -30,12 +36,15 @@ public class EntryService {
     private final EntryRepository entryRepository;
     private final AuthUsersRepository authUsersRepository;
     private final ContentKeywordService contentKeywordService;
+    private final ContentKeywordRepository contentKeywordRepository;
 
     @Autowired
-    public EntryService(EntryRepository entryRepository, AuthUsersRepository authUsersRepository, ContentKeywordService contentKeywordService) {
+    public EntryService(EntryRepository entryRepository, AuthUsersRepository authUsersRepository, ContentKeywordService contentKeywordService, ContentKeywordRepository contentKeywordRepository) {
         this.entryRepository = entryRepository;
         this.authUsersRepository = authUsersRepository;
         this.contentKeywordService = contentKeywordService;
+        this.contentKeywordRepository = contentKeywordRepository;
+        
     }
 
     public Page<Entry> getAll(int page, int size) {
@@ -62,25 +71,26 @@ public class EntryService {
         entryRepository.save(newEntry);
 
         // saving words/id into cosmos
-//        String parse = newEntry.getContent().replaceAll("[\\p{P}&&[^\\u0027]&&[\n]]", "").toLowerCase();
-//        String[] arr = parse.split(" ");
-//	      for(String a : arr) {
-//				
-//				if (!contentKeywordRepository.findByWord(a).isEmpty()) {
-//					Optional<ContentKeyword> opt = contentKeywordRepository.findById(a);
-//					if(contentKeywordRepository.findById(a).isPresent()) {
-//						ContentKeyword word = opt.get();
-//						if(!word.getListOfIds().contains(newEntry.getId())) {
-//							word.addId(newEntry.getId());
-//							contentKeywordRepository.save(word);
-//						}
-//					}
-//				}
-//				else {
-//					ContentKeyword keyword = new ContentKeyword(a, newEntry.getId());
-//					contentKeywordRepository.save(keyword);
-//				}
-//	      }
+        String parse = newEntry.getContent().replaceAll("[\\p{P}&&[^\\u0027]&&[\n]]", "").toLowerCase();
+        String[] arr = parse.split(" ");
+        Set<String> set = new HashSet<String>(Arrays.asList(arr));
+	      for(String s : set) {
+				
+				if (!contentKeywordRepository.findByWord(s).isEmpty()) {
+					Optional<ContentKeyword> opt = contentKeywordRepository.findById(s);
+					if(contentKeywordRepository.findById(s).isPresent()) {
+						ContentKeyword word = opt.get();
+						if(!word.getListOfIds().contains(newEntry.getId())) {
+							word.addId(newEntry.getId());
+							contentKeywordRepository.save(word);
+						}
+					}
+				}
+				else {
+					ContentKeyword keyword = new ContentKeyword(s, newEntry.getId());
+					contentKeywordRepository.save(keyword);
+				}
+	      }
         
         
     }
@@ -92,10 +102,13 @@ public class EntryService {
     }
     
     public Page<Entry> getFilteredEntries(String searchKey, int page, int size){
-        Pageable pageable = PageRequest.of(page, size, Sort.by("date").descending());
+//      Pageable pageable = PageRequest.of(page, size, Sort.by("date").descending());
 //    	return entryRepository.getFilteredEntries(searchKey, pageable);
-    	Page<Entry> entriesSearched = contentKeywordService.getFilteredContentKeywords(searchKey, pageable);
-    	return entriesSearched;
+    	Page<Entry> searchPage = contentKeywordService.getFilteredContentKeywords(searchKey, page, size);
+//    	Page<Entry> searchPage = new PageImpl<>(list.setPage(page).getPageList());
+//    	Page<Entry> searchPage = new PageImpl<>(list, pageable, list.size());
+    	return searchPage;
+//    	return contentKeywordService.getFilteredContentKeywords(searchKey, pageable);
     }
     
     public Entry updateEntry(UpdateEntryDto updateEntryDto, Long id) throws EntryNotFoundException, UsernameNotFoundException, ForbiddenException {
