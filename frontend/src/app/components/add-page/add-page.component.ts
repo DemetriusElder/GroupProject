@@ -41,9 +41,9 @@ export class AddPageComponent {
       this.postForm.markAllAsTouched();
     } else {
       const blogDto: BlogDto = {
-        imageUrl: this.postForm.get('imageUrl')?.value,
-        title: this.postForm.get('title')?.value,
-        content: this.postForm.get('content')?.value,
+        imageUrl: this.postForm.get('imageUrl')?.value!,
+        title: this.postForm.get('title')?.value!,
+        content: this.postForm.get('content')?.value!,
         author: this.authService.getFullName()!,
         username: this.authService.getUsername()!,
       };

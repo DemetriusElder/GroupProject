@@ -51,9 +51,9 @@ export class EditPageComponent implements OnInit {
       this.editForm.markAllAsTouched();
     } else {
       const blogDto: BlogDto = {
-        imageUrl: this.editForm.get('imageUrl')?.value,
-        title: this.editForm.get('title')?.value,
-        content: this.editForm.get('content')?.value,
+        imageUrl: this.editForm.get('imageUrl')?.value!,
+        title: this.editForm.get('title')?.value!,
+        content: this.editForm.get('content')?.value!,
         username: this.authService.getUsername()!,
       };
       this.updateBlog(blogDto);
@@ -77,9 +77,9 @@ export class EditPageComponent implements OnInit {
       null,
       () => {
         this.editForm.setValue({
-          title: this.blog?.title,
-          imageUrl: this.blog?.imageUrl,
-          content: this.blog?.content,
+          title: this.blog?.title!,
+          imageUrl: this.blog?.imageUrl!,
+          content: this.blog?.content!,
         });
       }
     );

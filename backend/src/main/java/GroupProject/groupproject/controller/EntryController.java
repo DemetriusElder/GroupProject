@@ -1,5 +1,7 @@
 package GroupProject.groupproject.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import GroupProject.groupproject.dto.DeletePostDto;
@@ -9,11 +11,13 @@ import GroupProject.groupproject.entity.Entry;
 import GroupProject.groupproject.exception.EntryNotFoundException;
 import GroupProject.groupproject.exception.ForbiddenException;
 import GroupProject.groupproject.exception.UsernameNotFoundException;
+import GroupProject.groupproject.service.ContentKeywordService;
 import GroupProject.groupproject.service.EntryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 @RestController()
@@ -21,10 +25,12 @@ import org.springframework.web.bind.annotation.*;
 public class EntryController {
 
 	private final EntryService entryService;
+	private final ContentKeywordService contentKeywordService;
 
 	@Autowired
-	public EntryController(EntryService entryService) {
+	public EntryController(EntryService entryService, ContentKeywordService contentKeywordService) {
 		this.entryService = entryService;
+		this.contentKeywordService = contentKeywordService;
 	}
 
 	@GetMapping()
@@ -77,6 +83,11 @@ public class EntryController {
 													 @RequestParam int size) {
 		return new ResponseEntity<>(entryService.getFilteredEntries(key, page, size), HttpStatus.OK);
 	}
+	
+//	@GetMapping("/searchCosmos/{searchKey}")
+//	public List<Long> searchEntriesWithCosmos(@PathVariable("searchKey") String key) {
+//		return contentKeywordService.getFilteredContentKeywords(key);
+//	}
 
 	@PutMapping("/{id}")
 	public ResponseEntity<Entry> updateEntry(@Valid @RequestBody UpdateEntryDto updateEntryDto,
